@@ -3,7 +3,7 @@
 } */
 @font-face {
   font-family: "Familjen Grotesk";
-  src: url("../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
 }
 .header {
   /* background-color: dodgerblue; */
