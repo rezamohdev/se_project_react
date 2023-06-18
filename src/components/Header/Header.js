@@ -1,12 +1,14 @@
 import './Header.css';
 // import logo from "./logo.svg";
 function Header() {
+    const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
+
     return (
         <>
             <div className="header">
                 <div className="header__left-side">
                     <img src={require("../../images/Logo.svg").default} alt="logo" className="header__logo" />
-                    <p className="header__date">June 15 New York</p>
+                    <p className="header__date">{currentDate}</p>
                 </div>
                 <div className="header__right-side">
                     <button className="header__button">Add clothes +</button>
