@@ -28,10 +28,13 @@ function Main({ onSelectCard, temp }) {
                 </section>
                 <section className="items" id="items-section" >
                     <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
-                    {filteredCards.map((item) => {
-                        <ItemCards item={item} onSelectCard={onSelectCard} />
+                    <div className="card-container">
 
-                    })}
+                        {filteredCards.map((item) => {
+                            return (<ItemCards item={item} onSelectCard={onSelectCard} />)
+                        }
+                        )}
+                    </div>
                 </section>
             </div>
         </>
