@@ -1,0 +1,18 @@
+.modal__body {
+  margin: 0;
+  padding: 0;
+}
+.modal__content {
+  width: 498px;
+  height: 610px;
+  padding: 0;
+  overflow: hidden;
+}
+.modal__footer {
+  padding: 20px 32px 32px;
+  margin: 0;
+}
+.modal__paragraph {
+  margin: 0;
+  padding: 0;
+}
