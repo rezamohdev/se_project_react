@@ -1,6 +1,9 @@
+import React from 'react';
+
 import './Header.css';
 // import logo from "./logo.svg";
-function Header() {
+function Header({ handleOpenModal }) {
+
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
 
     return (
@@ -11,7 +14,7 @@ function Header() {
                     <p className="header__date">{currentDate}</p>
                 </div>
                 <div className="header__right-side">
-                    <button className="header__button">Add clothes +</button>
+                    <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
                     <p className="header__user-title">Terrence Tegegne</p>
                     <img className="header__avatar" src={require("../../images/avatar.svg").default} />
                 </div>
