@@ -18,4 +18,9 @@ const weatherData = (data) => {
     const temperature = main && main.temp;
     return Math.ceil(temperature);
 }
-export { weatherData };
+const weatherName = (data) => {
+    const name = data.weather[0].main;
+    console.log(name)
+    return name;
+}
+export { weatherData, weatherName };

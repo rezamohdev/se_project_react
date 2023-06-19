@@ -31,7 +31,7 @@ function Main({ onSelectCard, temp }) {
                     <div className="card-container">
 
                         {filteredCards.map((item) => {
-                            return (<ItemCards item={item} onSelectCard={onSelectCard} />)
+                            return (<ItemCards item={item} onSelectCard={onSelectCard} key={item._id} />)
                         }
                         )}
                     </div>
