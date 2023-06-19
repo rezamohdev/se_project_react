@@ -1,5 +1,5 @@
-import './ModalWithImage.css';
-function ModalWithImage({ onClose, selectedCard }) {
+import './ItemModal.css';
+function ItemModal({ onClose, selectedCard }) {
     return (
         <>
             <div className={`modal modal__type_image`}>
@@ -17,4 +17,4 @@ function ModalWithImage({ onClose, selectedCard }) {
         </>);
 }
 
-export default ModalWithImage;
+export default ItemModal;

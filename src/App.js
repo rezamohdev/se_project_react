@@ -3,7 +3,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import ModalWithForm from './components/ModalWithForm/ModalWithForm';
-import ModalWithImage from './components/ModalWithImage/ModalWithImage';
+import ItemModal from './components/ItemModal/ItemModal';
 import { getWeatherForecast, weatherData } from './components/utils/WeatherApi';
 
 function App() {
@@ -25,7 +25,6 @@ function App() {
     getWeatherForecast().then((data) => {
       const temperature = weatherData(data);
       setTemp(temperature);
-      console.log(data)
     });
   }, []);
 
@@ -50,8 +49,8 @@ function App() {
           </fieldset>
         </ModalWithForm>)}
       {activeModal === "preview" && (
-        <ModalWithImage onClose={handleCloseModal} selectedCard={selectedCard}>
-        </ModalWithImage>)}
+        <ItemModal onClose={handleCloseModal} selectedCard={selectedCard}>
+        </ItemModal>)}
     </div>
   );
 }
