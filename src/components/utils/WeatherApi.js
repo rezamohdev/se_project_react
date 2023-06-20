@@ -19,9 +19,7 @@ const weatherData = (data) => {
     return Math.ceil(temperature);
 }
 const weatherName = (data) => {
-    console.log(data);
     const name = data.weather[0].main;
-    console.log(name)
     return name;
 }
 

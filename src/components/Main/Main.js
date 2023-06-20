@@ -31,7 +31,6 @@ function Main({ onSelectCard, temp, cardBackground }) {
     });
 
     var hr = (new Date().getHours());
-    console.log(dayType);
 
     const filteredCards = defaultClothingItems.filter((card) => {
         return card.weather.toLowerCase() === weatherType;
@@ -47,7 +46,6 @@ function Main({ onSelectCard, temp, cardBackground }) {
                     <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
                     {/* <p>Weather condition: {cardBackground}</p>
                     <p>Day or night: {`${dayType}`}</p> */}
-                    {console.log(dayType)}
 
                     <div className="card-container">
 
