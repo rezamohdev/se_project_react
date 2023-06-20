@@ -63,7 +63,7 @@ const weatherOptions = [
     },
     {
         url: require("../../images/weather_conditions/day-storm.svg").default,
-        type: 'Storm',
+        type: 'Thunderstorm',
         day: true
     },
     {
@@ -98,7 +98,7 @@ const weatherOptions = [
     },
     {
         url: require("../../images/weather_conditions/night-storm.svg").default,
-        type: 'Storm',
+        type: 'Thunderstorm',
         day: false
     },
 ];
