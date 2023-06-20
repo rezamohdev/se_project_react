@@ -1,9 +1,9 @@
 import React from 'react';
 import './Main.css';
-import { defaultClothingItems, weatherOptions } from '../utils/constants';
+import { defaultClothingItems, weatherOptions } from '../../utils/constants';
 import WeatherBackground from './WeatherBackground';
 import ItemCards from './ItemCards';
-import { getWeatherForecast, } from '../utils/WeatherApi';
+import { getWeatherForecast, } from '../../utils/WeatherApi';
 function Main({ onSelectCard, temp, cardBackground }) {
     const [dayType, setDayType] = React.useState(true);
 

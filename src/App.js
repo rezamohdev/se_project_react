@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import ModalWithForm from './components/ModalWithForm/ModalWithForm';
 import ItemModal from './components/ItemModal/ItemModal';
-import { getWeatherForecast, weatherData, weatherName } from './components/utils/WeatherApi';
+import { getWeatherForecast, weatherData, weatherName } from './utils/WeatherApi';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");

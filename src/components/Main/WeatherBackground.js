@@ -1,4 +1,4 @@
-import { weatherOptions } from "../utils/constants";
+import { weatherOptions } from "../../utils/constants";
 
 function WeatherBackground({ day, type }) {
     const imageSource = weatherOptions.filter((i) => {
