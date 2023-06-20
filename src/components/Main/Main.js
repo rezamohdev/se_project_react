@@ -3,7 +3,9 @@ import './Main.css';
 import { defaultClothingItems } from '../utils/constants';
 import WeatherBackground from './WeatherBackground';
 import ItemCards from './ItemCards';
+import { getWeatherForecast, weatherName } from '../utils/WeatherApi';
 function Main({ onSelectCard, temp }) {
+    const [cardBackground, setCardBackground] = React.useState("sunny");
 
     const weatherType = React.useMemo(() => {
         if (temp >= 86) {
@@ -14,6 +16,12 @@ function Main({ onSelectCard, temp }) {
             return 'cold';
         }
     }, [temp]);
+    React.useEffect(() => {
+        getWeatherForecast().then((data) => {
+            const weatherCondition = weatherName(data);
+            setCardBackground(weatherCondition);
+        });
+    }, []);
 
     const filteredCards = defaultClothingItems.filter((card) => {
         return card.weather.toLowerCase() === weatherType;
@@ -24,7 +32,7 @@ function Main({ onSelectCard, temp }) {
             <div className="Main" >
                 <section className="weather" id="weather-section" >
                     <span className='weather__temperature'>{temp} °F</span>
-                    <WeatherBackground day={true} type='cloudy' />
+                    <WeatherBackground day={true} type={"sunny"} />
                 </section>
                 <section className="items" id="items-section" >
                     <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>

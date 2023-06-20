@@ -4,20 +4,12 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import ModalWithForm from './components/ModalWithForm/ModalWithForm';
 import ItemModal from './components/ItemModal/ItemModal';
-import { getWeatherForecast, weatherData, weatherName } from './components/utils/WeatherApi';
+import { getWeatherForecast, weatherData } from './components/utils/WeatherApi';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
   const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
-  const [cardBackground, setCardBackground] = React.useState("sunny");
-
-  // const backgroundType = React.useMemo(() => {
-  //   if (weatherName === 'sunny') {
-  //     setCardBackground()
-  //   } else { }
-  //   // if () { } else { } if () { }
-  // }, [])
 
   const handleOpenModal = () => {
     setActiveModal("open");

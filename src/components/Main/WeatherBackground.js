@@ -5,6 +5,7 @@ function WeatherBackground({ day, type }) {
         return i.day === day && i.type === type
     });
     const imageSourceUrl = imageSource[0].url || "";
+    { console.log(imageSourceUrl) }
     return (<>
         <img className='weather__bg' src={imageSourceUrl} />
     </>);
