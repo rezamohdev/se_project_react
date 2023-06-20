@@ -43,62 +43,62 @@ const defaultClothingItems = [
 const weatherOptions = [
     {
         url: require("../../images/weather_conditions/day-cloudy.svg").default,
-        type: 'cloudy',
+        type: 'Clouds',
         day: true
     },
     {
         url: require("../../images/weather_conditions/day-fog.svg").default,
-        type: 'fog',
+        type: 'Fog',
         day: true
     },
     {
         url: require("../../images/weather_conditions/day-rain.svg").default,
-        type: 'rain',
+        type: 'Rain',
         day: true
     },
     {
         url: require("../../images/weather_conditions/day-snow.svg").default,
-        type: 'snow',
+        type: 'Snow',
         day: true
     },
     {
         url: require("../../images/weather_conditions/day-storm.svg").default,
-        type: 'storm',
+        type: 'Storm',
         day: true
     },
     {
         url: require("../../images/weather_conditions/day-sunny.svg").default,
-        type: 'sunny',
+        type: 'Clear',
         day: true
     },
     {
         url: require("../../images/weather_conditions/night-cloudy.svg").default,
-        type: 'cloudy',
+        type: 'Clouds',
         day: false
     },
     {
         url: require("../../images/weather_conditions/night-fog.svg").default,
-        type: 'fog',
+        type: 'Fog',
         day: false
     },
     {
         url: require("../../images/weather_conditions/night-moon.svg").default,
-        type: 'moon',
+        type: 'Clear',
         day: false
     },
     {
         url: require("../../images/weather_conditions/night-rain.svg").default,
-        type: 'rain',
+        type: 'Rain',
         day: false
     },
     {
         url: require("../../images/weather_conditions/night-snow.svg").default,
-        type: 'snow',
+        type: 'Snow',
         day: false
     },
     {
         url: require("../../images/weather_conditions/night-storm.svg").default,
-        type: 'storm',
+        type: 'Storm',
         day: false
     },
 ];

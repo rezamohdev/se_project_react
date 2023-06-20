@@ -24,4 +24,5 @@ const weatherName = (data) => {
     console.log(name)
     return name;
 }
+
 export { weatherData, weatherName };

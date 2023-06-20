@@ -1,11 +1,12 @@
 import React from 'react';
 import './Main.css';
-import { defaultClothingItems } from '../utils/constants';
+import { defaultClothingItems, weatherOptions } from '../utils/constants';
 import WeatherBackground from './WeatherBackground';
 import ItemCards from './ItemCards';
-import { getWeatherForecast, weatherName } from '../utils/WeatherApi';
+import { getWeatherForecast, weatherName, } from '../utils/WeatherApi';
 function Main({ onSelectCard, temp }) {
     const [cardBackground, setCardBackground] = React.useState("sunny");
+    const [dayType, setDayType] = React.useState(true);
 
     const weatherType = React.useMemo(() => {
         if (temp >= 86) {
@@ -23,19 +24,33 @@ function Main({ onSelectCard, temp }) {
         });
     }, []);
 
+    getWeatherForecast().then((data) => {
+        const sunset = new Date((data.sys.sunset) * 1000);
+        console.log(sunset)
+        const sunrise = new Date((data.sys.sunrise) * 1000);
+        if (Date.now() >= sunrise) {
+            setDayType(true)
+        } else if (Date.now() <= sunset) {
+            setDayType(false)
+        }
+    })
+
+    var hr = (new Date().getHours());
+
     const filteredCards = defaultClothingItems.filter((card) => {
         return card.weather.toLowerCase() === weatherType;
     });
-
     return (
         <>
             <div className="Main" >
                 <section className="weather" id="weather-section" >
                     <span className='weather__temperature'>{temp} °F</span>
-                    <WeatherBackground day={true} type={"sunny"} />
+                    <WeatherBackground day={dayType} type={cardBackground} />
                 </section>
                 <section className="items" id="items-section" >
                     <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
+                    <p>{cardBackground}</p>
+
                     <div className="card-container">
 
                         {filteredCards.map((item) => {
