@@ -62,3 +62,29 @@
 .header__avatar {
   height: 40px;
 }
+
+@media only screen and (max-width: 376px) {
+  .header__logo {
+    display: none;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "name avatar"
+      "button";
+  }
+  .header__avatar {
+    grid-area: "avatar";
+  }
+  .header__button {
+    grid-area: "button";
+  }
+  .header__user-title {
+    grid-area: "name";
+  }
+  .header__date {
+    display: none;
+  }
+}

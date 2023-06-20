@@ -7,16 +7,22 @@ import ItemModal from './components/ItemModal/ItemModal';
 import { getWeatherForecast, weatherData, weatherName } from './utils/WeatherApi';
 
 function App() {
+  const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [activeModal, setActiveModal] = React.useState("");
   const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
   const [cardBackground, setCardBackground] = React.useState("Clear");
+  const [location, setLocation] = React.useState("");
   React.useEffect(() => {
     getWeatherForecast().then((data) => {
       const weatherCondition = weatherName(data);
       setCardBackground(weatherCondition);
     });
   }, []);
+
+  // const toggleMobileMenu = () => {
+
+  // }
 
   const handleOpenModal = () => {
     setActiveModal("open");
@@ -30,6 +36,8 @@ function App() {
   }
   React.useEffect(() => {
     getWeatherForecast().then((data) => {
+      const currentLocation = data.name;
+      setLocation(currentLocation);
       const temperature = weatherData(data);
       setTemp(temperature);
     });
@@ -37,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleOpenModal={handleOpenModal} />
+      <Header handleOpenModal={handleOpenModal} currenLocation={location} />
       <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} />
       <Footer />
       {activeModal === "open" && (

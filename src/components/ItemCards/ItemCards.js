@@ -1,3 +1,4 @@
+import './ItemCards.css'
 function ItemCards({ onSelectCard, item }) {
     return (
         <>

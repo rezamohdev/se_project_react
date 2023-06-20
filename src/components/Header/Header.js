@@ -1,8 +1,7 @@
 import React from 'react';
-
 import './Header.css';
 // import logo from "./logo.svg";
-function Header({ handleOpenModal }) {
+function Header({ handleOpenModal, currenLocation }) {
 
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
 
@@ -11,7 +10,7 @@ function Header({ handleOpenModal }) {
             <div className="header">
                 <div className="header__left-side">
                     <img src={require("../../images/Logo.svg").default} alt="logo" className="header__logo" />
-                    <p className="header__date">{currentDate}</p>
+                    <p className="header__date">{currentDate}, {currenLocation}</p>
                 </div>
                 <div className="header__right-side">
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
