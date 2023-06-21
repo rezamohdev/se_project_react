@@ -2,18 +2,17 @@
   font-family: "Familjen Grotesk";
   src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
 }
-.header {
-  /* background-color: dodgerblue; */
+.nav {
   display: flex;
   justify-content: space-between;
-  max-width: 100%;
-  height: 73px;
-  padding: 0 40px;
   position: relative;
-}
-.header__menu-button {
+  margin: 0;
+  padding: 18px 16px 0 16px;
+  visibility: hidden;
   display: none;
-  position: absolute;
+}
+.nav__menu-button {
+  visibility: hidden;
   top: 18px;
   right: 16px;
   border-radius: 10px;
@@ -25,6 +24,79 @@
   width: 44px;
   border: none;
 }
+.nav__log {
+  height: 40px;
+  width: 89px;
+}
+.nav__user-info {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+.nav__menu {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  /* left: 16px; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 208px;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 3;
+  visibility: hidden;
+}
+.nav__user-title {
+  grid-area: "name";
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  /* identical to box height */
+  width: 157px;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+.nav__avatar {
+  grid-area: "avatar";
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+.nav__button {
+  grid-area: "button";
+  width: 100%;
+  cursor: pointer;
+  font-family: "Familjen Grotesk";
+  background: transparent;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+  border: none;
+  color: #000000;
+}
+.header {
+  /* background-color: dodgerblue; */
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  height: 73px;
+  padding: 0 40px;
+  position: relative;
+}
+
 /* header left side */
 .header__left-side {
   display: flex;
@@ -78,28 +150,13 @@
 }
 
 @media only screen and (max-width: 376px) {
-  .header__logo {
-    display: none;
+  .header {
+    visibility: hidden;
   }
-  .header__right-side {
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    /* grid-template-areas:
-      "name avatar"
-      "button ."; */
+  .nav {
+    height: 40px;
   }
-  .header__avatar {
-    grid-area: "avatar";
-  }
-  .header__button {
-    grid-row: 1fr 1fr;
-    grid-area: "button";
-  }
-  .header__user-title {
-    width: 157px;
-    grid-area: "name";
-  }
-  .header__date {
-    display: none;
+  .nav__menu-button {
+    visibility: visible;
   }
 }

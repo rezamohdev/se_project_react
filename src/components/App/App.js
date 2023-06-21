@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import ModalWithForm from './components/ModalWithForm/ModalWithForm';
-import ItemModal from './components/ItemModal/ItemModal';
-import { getWeatherForecast, weatherData, weatherName } from './utils/WeatherApi';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import ItemModal from '../ItemModal/ItemModal';
+import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 
 function App() {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);

@@ -2,7 +2,7 @@ import React from 'react';
 import './Main.css';
 import { defaultClothingItems, weatherOptions } from '../../utils/constants';
 import WeatherBackground from './WeatherBackground';
-import ItemCards from '../ItemCards/ItemCards';
+import ItemCard from '../ItemCard/ItemCard';
 import { getWeatherForecast, } from '../../utils/WeatherApi';
 function Main({ onSelectCard, temp, cardBackground }) {
     const [dayType, setDayType] = React.useState(true);
@@ -36,27 +36,25 @@ function Main({ onSelectCard, temp, cardBackground }) {
         return card.weather.toLowerCase() === weatherType;
     });
     return (
-        <>
-            <div className="Main" >
-                <section className="weather" id="weather-section" >
-                    <span className='weather__temperature'>{temp} °F</span>
-                    <WeatherBackground day={dayType} type={cardBackground} />
-                </section>
-                <section className="items" id="items-section" >
-                    <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
-                    {/* <p>Weather condition: {cardBackground}</p>
+        <div className="Main" >
+            <section className="weather" id="weather-section" >
+                <span className='weather__temperature'>{temp} °F</span>
+                <WeatherBackground day={dayType} type={cardBackground} />
+            </section>
+            <section className="items" id="items-section" >
+                <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
+                {/* <p>Weather condition: {cardBackground}</p>
                     <p>Day or night: {`${dayType}`}</p> */}
 
-                    <div className="card-container">
+                <div className="card-container">
 
-                        {filteredCards.map((item) => {
-                            return (<ItemCards item={item} onSelectCard={onSelectCard} key={item._id} />)
-                        }
-                        )}
-                    </div>
-                </section>
-            </div>
-        </>
+                    {filteredCards.map((item) => {
+                        return (<ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />)
+                    }
+                    )}
+                </div>
+            </section>
+        </div>
     );
 }
 
