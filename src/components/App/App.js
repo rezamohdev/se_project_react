@@ -4,25 +4,39 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
+import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 
 function App() {
-  const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [activeModal, setActiveModal] = React.useState("");
   const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
   const [cardBackground, setCardBackground] = React.useState("Clear");
   const [location, setLocation] = React.useState("");
+  const [dayType, setDayType] = React.useState(true);
+  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
+
   React.useEffect(() => {
-    getWeatherForecast().then((data) => {
-      const weatherCondition = weatherName(data);
-      setCardBackground(weatherCondition);
-    });
+    getWeatherForecast().
+      then((data) => {
+        const weatherCondition = weatherName(data);
+        setCardBackground(weatherCondition);
+        const currentLocation = data.name;
+        setLocation(currentLocation);
+        const temperature = weatherData(data);
+        setTemp(temperature);
+        const sunset = new Date((data.sys.sunset) * 1000);
+        const sunrise = new Date((data.sys.sunrise) * 1000);
+        if (Date.now() >= sunrise) {
+          setDayType(true)
+        } else if (Date.now() <= sunset) {
+          setDayType(false)
+        }
+      }).catch((err) => {
+        console.error(err);
+      });
   }, []);
 
-  // const toggleMobileMenu = () => {
-
-  // }
 
   const handleOpenModal = () => {
     setActiveModal("open");
@@ -34,22 +48,19 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   }
-  React.useEffect(() => {
-    getWeatherForecast().then((data) => {
-      const currentLocation = data.name;
-      setLocation(currentLocation);
-      const temperature = weatherData(data);
-      setTemp(temperature);
-    });
-  }, []);
+
+  // const toggleMobileMenu = () => {
+
+  // }
+
 
   return (
     <div className="App">
       <Header handleOpenModal={handleOpenModal} currenLocation={location} />
-      <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} />
+      <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} dayType={dayType} />
       <Footer />
       {activeModal === "open" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal} name='form'>
+        <ModalWithForm title="New garment" onClose={handleCloseModal} name='form' buttonText="Add garment" >
           <fieldset className='form__fieldset'>
             <label htmlFor='name' className='form__label'>Name</label>
             <input type='text' id='name' className='form__input' placeholder='Name' />
@@ -62,11 +73,14 @@ function App() {
             <label htmlFor="wather-warm" className='form__label'><input type='radio' name='weatherType' id='wather-warm' className='form__input' /> Warm</label>
             <label htmlFor="wather-cold" className='form__label'><input type='radio' name='weatherType' id='wather-cold' className='form__input' /> Cold</label>
           </fieldset>
-        </ModalWithForm>)}
-      {activeModal === "preview" && (
-        <ItemModal onClose={handleCloseModal} selectedCard={selectedCard}>
-        </ItemModal>)}
-    </div>
+        </ModalWithForm>)
+      }
+      {
+        activeModal === "preview" && (
+          <ItemModal onClose={handleCloseModal} selectedCard={selectedCard}>
+          </ItemModal>)
+      }
+    </div >
   );
 }
 

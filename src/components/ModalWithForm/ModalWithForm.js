@@ -1,6 +1,6 @@
 import React from 'react';
 import './ModalWithForm.css';
-function ModalWithForm({ children, buttonText = "Add garment", title, onClose, name }) {
+function ModalWithForm({ children, buttonText, title, onClose, name }) {
     return (
         <div className={`modal modal__type_${name}`}>
             <div className='modal__content'>
