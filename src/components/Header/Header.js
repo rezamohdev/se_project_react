@@ -8,6 +8,7 @@ function Header({ handleOpenModal, currenLocation }) {
     return (
         <>
             <div className="header">
+                <button className='header__menu-button'></button>
                 <div className="header__left-side">
                     <img src={require("../../images/Logo.svg").default} alt="logo" className="header__logo" />
                     <p className="header__date">{currentDate}, {currenLocation}</p>
