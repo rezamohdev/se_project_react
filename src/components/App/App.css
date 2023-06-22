@@ -1,3 +1,7 @@
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 input[type="radio"] {
   accent-color: #232323;
 }

@@ -5,6 +5,7 @@ import dayFog from "../images/weather_conditions/day-fog.svg";
 import daySnow from "../images/weather_conditions/day-snow.svg";
 import dayStrom from "../images/weather_conditions/day-storm.svg";
 import dayClear from "../images/weather_conditions/day-sunny.svg";
+import dayMist from "../images/weather_conditions/day-mist.svg";
 
 // night backgrounds
 import nightCloud from "../images/weather_conditions/night-cloudy.svg"
@@ -13,6 +14,7 @@ import nightFog from "../images/weather_conditions/night-fog.svg";
 import nightSnow from "../images/weather_conditions/night-snow.svg";
 import nightStrom from "../images/weather_conditions/night-storm.svg";
 import nightClear from "../images/weather_conditions/night-moon.svg";
+import nightMist from "../images/weather_conditions/night-mist.svg";
 // default clothing items array
 const defaultClothingItems = [
     {
@@ -87,6 +89,11 @@ const weatherOptions = [
         day: true
     },
     {
+        url: dayFog,
+        type: 'Mist',
+        day: true
+    },
+    {
         url: nightCloud,
         type: 'Clouds',
         day: false
@@ -114,6 +121,11 @@ const weatherOptions = [
     {
         url: nightStrom,
         type: 'Thunderstorm',
+        day: false
+    },
+    {
+        url: nightFog,
+        type: 'Mist',
         day: false
     },
 ];

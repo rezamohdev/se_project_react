@@ -1,5 +1,5 @@
-const latitude = 40.20;
-const longitude = -76.89;
+const latitude = 40.69;
+const longitude = -73.97;
 const APIkey = "48dd2c71369f97404ad7ca3630020d84";
 
 // https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}

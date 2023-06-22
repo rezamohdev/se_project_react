@@ -19,6 +19,7 @@ function App() {
   React.useEffect(() => {
     getWeatherForecast().
       then((data) => {
+        console.log(data);
         const weatherCondition = weatherName(data);
         setCardBackground(weatherCondition);
         const currentLocation = data.name;
@@ -55,7 +56,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="app">
       <Header handleOpenModal={handleOpenModal} currenLocation={location} />
       <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} dayType={dayType} />
       <Footer />
