@@ -1,4 +1,5 @@
 import { weatherOptions } from "../../utils/constants";
+import "./WeatherCard.css";
 
 function WeatherBackground({ day, type }) {
     // weatherOptions.find((item) => console.log(item.day === day && item.type === type));
