@@ -12,6 +12,7 @@ function Header({ handleOpenModal, currenLocation }) {
                 <img src={logo} alt="logo" className="nav__logo" />
                 <button className='nav__menu-button'></button>
                 <menu className='nav__menu'>
+                    <button className='nav__menu-close'></button>
                     <div className='nav__user-info'>
                         <p className="nav__user-title">Terrence Tegegne</p>
                         <img className="nav__avatar" src={avatarImage} alt='avatar' />

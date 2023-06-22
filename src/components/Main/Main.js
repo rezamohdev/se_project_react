@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.css';
 import { defaultClothingItems, weatherOptions } from '../../utils/constants';
-import WeatherBackground from './WeatherBackground';
+import WeatherBackground from '../WeatherCard/WeatherCard ';
 import ItemCard from '../ItemCard/ItemCard';
 function Main({ onSelectCard, temp, cardBackground, dayType }) {
     const getWeatherType = () => {
