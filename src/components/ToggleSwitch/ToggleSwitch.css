@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.switch {
+  width: 53px;
+  height: 28px;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+  position: relative;
+  transition: border-color ease-in 250ms;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+.switch:hover {
+  border-color: #000;
+}
+.switch__box {
+  position: absolute;
+  appearance: none;
+}
+.switch__slider_C {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+  background-color: #000;
+  transition: all ease 450ms;
+  z-index: 0;
+}
+.switch__slider_F {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  background-color: #000;
+  transition: all ease 450ms;
+  z-index: 0;
+}
+.switch__slider_F:active,
+.switch__slider_C:active {
+  width: 34px;
+}
+.switch__temp-unit_f {
+  /* right: 7px; */
+  font-size: 14px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+}
+.switch__temp-unit_c {
+  font-size: 14px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+}
+.switch__active {
+  color: #fff;
+  z-index: 2;
+}

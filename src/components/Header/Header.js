@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import logo from "../../images/Logo.svg";
 import avatarImage from '../../images/avatar.svg';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 function Header({ handleOpenModal, currenLocation }) {
 
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
@@ -27,6 +28,7 @@ function Header({ handleOpenModal, currenLocation }) {
                     <p className="header__date">{currentDate}, {currenLocation}</p>
                 </div>
                 <div className="header__right-side">
+                    <ToggleSwitch />
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
                     <p className="header__user-title">Terrence Tegegne</p>
                     <img className="header__avatar" src={avatarImage} alt='avatar' />
