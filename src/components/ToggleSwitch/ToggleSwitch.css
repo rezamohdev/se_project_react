@@ -22,7 +22,8 @@
   position: absolute;
   appearance: none;
 }
-.switch__slider_C {
+/* .switch__box:checked */
+.switch__slider_F {
   position: absolute;
   width: 28px;
   height: 28px;
@@ -33,7 +34,7 @@
   transition: all ease 450ms;
   z-index: -1;
 }
-.switch__slider_F {
+.switch__slider_C {
   position: absolute;
   width: 28px;
   height: 28px;
@@ -49,7 +50,6 @@
   width: 34px;
 }
 .switch__temp-unit_f {
-  /* right: 7px; */
   font-size: 14px;
   font-family: "Familjen Grotesk";
   font-style: normal;

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
+import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 
@@ -15,6 +16,11 @@ function App() {
   const [location, setLocation] = React.useState("");
   const [dayType, setDayType] = React.useState(true);
   // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
+  const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
+  function handleToggleSwitchChange(e) {
+    currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
+    console.log(currentTempratureUnit)
+  }
 
   React.useEffect(() => {
     getWeatherForecast().
@@ -57,8 +63,10 @@ function App() {
 
   return (
     <div className="app">
-      <Header handleOpenModal={handleOpenModal} currenLocation={location} />
-      <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} dayType={dayType} />
+      <CurrentTempratureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
+        <Header handleOpenModal={handleOpenModal} currenLocation={location} />
+        <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} dayType={dayType} />
+      </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (
         <ModalWithForm title="New garment" onClose={handleCloseModal} name='form' buttonText="Add garment" >

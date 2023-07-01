@@ -94,6 +94,11 @@ const weatherOptions = [
         day: true
     },
     {
+        url: dayFog,
+        type: 'Haze',
+        day: true
+    },
+    {
         url: nightCloud,
         type: 'Clouds',
         day: false
@@ -126,6 +131,11 @@ const weatherOptions = [
     {
         url: nightFog,
         type: 'Mist',
+        day: false
+    },
+    {
+        url: nightFog,
+        type: 'Haze',
         day: false
     },
 ];
