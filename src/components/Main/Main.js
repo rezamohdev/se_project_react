@@ -8,7 +8,6 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
     const { currentTempratureUnit } = React.useContext(CurrentTempratureUnitContext);
     const temp = weatherTemp?.temprature?.[currentTempratureUnit] || 999;
     const currenTemp = weatherTemp?.weather?.temperature?.[currentTempratureUnit];
-    console.log(currenTemp);
     const getWeatherType = () => {
         if (temp >= 86) {
             return 'hot';

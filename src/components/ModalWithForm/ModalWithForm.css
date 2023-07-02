@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 .modal__type_form .modal__content {
   padding: 28px;

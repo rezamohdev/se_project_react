@@ -23,7 +23,6 @@ const weatherData = (data) => {
             C: Math.round((temperature - 32) * 5 / 9)
         }
     }
-    console.log(weather);
     // return Math.ceil(temperature);
     return { weather };
 }

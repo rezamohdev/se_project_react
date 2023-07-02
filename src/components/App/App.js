@@ -10,6 +10,7 @@ import { getWeatherForecast, weatherData, weatherName } from '../../utils/Weathe
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { Route } from 'react-router-dom/cjs/react-router-dom';
 import Profile from '../Profile/Profile';
+import AddItemModal from '../AddItemModal/AddItemModal';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
@@ -56,7 +57,9 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   }
-
+  const handleOnAddItem = (values) => {
+    console.log(values)
+  }
   // const toggleMobileMenu = () => {
 
   // }
@@ -70,7 +73,6 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Main onSelectCard={handleSelectedCard} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
-
           </Route>
           <Route path="/profile">
             <Profile />
@@ -78,27 +80,8 @@ function App() {
         </Switch>
       </CurrentTempratureUnitContext.Provider>
       <Footer />
-      {activeModal === "open" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal} name='form' buttonText="Add garment" >
-          <fieldset className='form__fieldset'>
-            <label htmlFor='name' className='form__label'>Name</label>
-            <input type='text' id='name' className='form__input' placeholder='Name' />
-            <label htmlFor='url' className='form__label'>Image</label>
-            <input id='url' type='url' className='form__input' placeholder='Image URL' />
-          </fieldset>
-          <fieldset className='form__fieldset'>
-            <span className='form__label'>Select the weather type:</span>
-            <label htmlFor="wather-hot" className='form__label'><input type='radio' name='weatherType' id='wather-hot' className='form__input' /> Hot</label>
-            <label htmlFor="wather-warm" className='form__label'><input type='radio' name='weatherType' id='wather-warm' className='form__input' /> Warm</label>
-            <label htmlFor="wather-cold" className='form__label'><input type='radio' name='weatherType' id='wather-cold' className='form__input' /> Cold</label>
-          </fieldset>
-        </ModalWithForm>)
-      }
-      {
-        activeModal === "preview" && (
-          <ItemModal onClose={handleCloseModal} selectedCard={selectedCard}>
-          </ItemModal>)
-      }
+      {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
+      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard}> </ItemModal>)}
     </div >
   );
 }
