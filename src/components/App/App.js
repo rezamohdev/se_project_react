@@ -7,6 +7,9 @@ import ItemModal from '../ItemModal/ItemModal';
 import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route } from 'react-router-dom/cjs/react-router-dom';
+import Profile from '../Profile/Profile';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
@@ -63,7 +66,16 @@ function App() {
     <div className="app">
       <CurrentTempratureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
         <Header handleOpenModal={handleOpenModal} currenLocation={location} />
-        <Main onSelectCard={handleSelectedCard} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
+
+        <Switch>
+          <Route exact path="/">
+            <Main onSelectCard={handleSelectedCard} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
+
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+        </Switch>
       </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (
