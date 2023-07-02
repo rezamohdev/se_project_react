@@ -6,9 +6,9 @@ import ItemCard from '../ItemCard/ItemCard';
 import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
     const { currentTempratureUnit } = React.useContext(CurrentTempratureUnitContext);
-    console.log(currentTempratureUnit);
     const temp = weatherTemp?.temprature?.[currentTempratureUnit] || 999;
-    console.log(weatherTemp);
+    const currenTemp = weatherTemp?.weather?.temperature?.[currentTempratureUnit];
+    console.log(currenTemp);
     const getWeatherType = () => {
         if (temp >= 86) {
             return 'hot';
@@ -18,7 +18,6 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
             return 'cold';
         }
     }
-    console.log(temp);
     const weatherType = getWeatherType();
 
     const filteredCards = defaultClothingItems.filter((card) => {
@@ -27,11 +26,11 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
     return (
         <div className="Main" >
             <section className="weather" id="weather-section" >
-                <span className='weather__temperature'>{temp} °F</span>
+                <span className='weather__temperature'>{currenTemp} {currentTempratureUnit === 'F' ? '°F' : '°C'}</span>
                 <WeatherBackground day={dayType} type={cardBackground} />
             </section>
             <section className="items" id="items-section" >
-                <span className='weather__suggest'>Today is {temp}°F / You may want to wear:</span>
+                <span className='weather__suggest'>Today is {currenTemp}{currentTempratureUnit === 'F' ? '°F' : '°C'} / You may want to wear:</span>
                 {/* {/* <p>Weather condition: {cardBackground}</p> */}
                 {/* <p>Day or night: {`${dayType}`}</p> */}
 

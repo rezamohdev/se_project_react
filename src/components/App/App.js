@@ -24,7 +24,6 @@ function App() {
   React.useEffect(() => {
     getWeatherForecast().
       then((data) => {
-        console.log(data);
         const weatherCondition = weatherName(data);
         setCardBackground(weatherCondition);
         const currentLocation = data.name;
