@@ -3,7 +3,12 @@ import './Main.css';
 import { defaultClothingItems, weatherOptions } from '../../utils/constants';
 import WeatherBackground from '../WeatherCard/WeatherCard ';
 import ItemCard from '../ItemCard/ItemCard';
-function Main({ onSelectCard, temp, cardBackground, dayType }) {
+import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
+function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
+    const { currentTempratureUnit } = React.useContext(CurrentTempratureUnitContext);
+    console.log(currentTempratureUnit);
+    const temp = weatherTemp?.temprature?.[currentTempratureUnit] || 999;
+    console.log(weatherTemp);
     const getWeatherType = () => {
         if (temp >= 86) {
             return 'hot';
@@ -13,6 +18,7 @@ function Main({ onSelectCard, temp, cardBackground, dayType }) {
             return 'cold';
         }
     }
+    console.log(temp);
     const weatherType = getWeatherType();
 
     const filteredCards = defaultClothingItems.filter((card) => {

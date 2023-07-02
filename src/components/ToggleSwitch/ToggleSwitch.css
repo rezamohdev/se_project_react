@@ -18,6 +18,12 @@
 .switch:hover {
   border-color: #000;
 }
+.switch:hover .switch__temp-unit_f {
+  color: #000;
+}
+.switch:hover .switch__temp-unit_c {
+  color: #000;
+}
 .switch__box {
   position: absolute;
   appearance: none;
@@ -64,16 +70,17 @@
   transition: all ease 450ms;
   z-index: -1;
 } */
-.switch__slider_F:active,
+/* .switch__slider_F:active,
 .switch__slider_C:active {
   width: 34px;
-}
+} */
 .switch__temp-unit_f {
   font-size: 14px;
   font-family: "Familjen Grotesk";
   font-style: normal;
   font-weight: 700;
   z-index: 3;
+  color: #7e7e7e;
 }
 .switch__temp-unit_c {
   z-index: 3;
@@ -81,9 +88,10 @@
   font-family: "Familjen Grotesk";
   font-style: normal;
   font-weight: 700;
+  color: #7e7e7e;
 }
 .switch__active {
-  color: #fff;
+  color: #fff !important;
   font-size: 14px;
   font-family: "Familjen Grotesk";
   font-style: normal;

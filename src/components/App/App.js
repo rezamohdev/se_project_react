@@ -19,7 +19,6 @@ function App() {
   const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
   function handleToggleSwitchChange(e) {
     currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
-    console.log(currentTempratureUnit)
   }
 
   React.useEffect(() => {
@@ -65,7 +64,7 @@ function App() {
     <div className="app">
       <CurrentTempratureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
         <Header handleOpenModal={handleOpenModal} currenLocation={location} />
-        <Main onSelectCard={handleSelectedCard} temp={temp} cardBackground={cardBackground} dayType={dayType} />
+        <Main onSelectCard={handleSelectedCard} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
       </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (
