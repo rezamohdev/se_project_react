@@ -66,8 +66,8 @@ function App() {
     }).catch((err) => {
       console.error(err);
     });
-
   }
+
   // const toggleMobileMenu = () => {
 
   // }
@@ -83,7 +83,7 @@ function App() {
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile cards={clothingItems} />
           </Route>
         </Switch>
       </CurrentTempratureUnitContext.Provider>

@@ -19,7 +19,7 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
     }
     const weatherType = getWeatherType();
 
-    const filteredCards = defaultClothingItems.filter((card) => {
+    const filteredCards = cards.filter((card) => {
         return card.weather.toLowerCase() === weatherType;
     });
     return (
@@ -34,8 +34,8 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
                 {/* <p>Day or night: {`${dayType}`}</p> */}
 
                 <div className="card-container">
-                    {cards.map((item) => {
-                        return (<ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />)
+                    {filteredCards.map((item) => {
+                        return (<ItemCard card={item} onSelectCard={onSelectCard} key={item.id} />)
                     }
                     )}
                 </div>

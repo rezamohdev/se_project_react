@@ -2,11 +2,11 @@ import React from "react";
 import './Profile.css';
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile() {
+function Profile({ cards }) {
     return (
         <div className="profile">
             <SideBar />
-            <ClothesSection />
+            <ClothesSection sectionData={cards} />
         </div >
     )
 }
