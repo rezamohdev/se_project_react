@@ -90,6 +90,11 @@
   font-weight: 700;
   color: #7e7e7e;
 }
+.switch__temp-unit_f::selection,
+.switch__temp-unit_c::selection {
+  background-color: transparent;
+  /* color: none; */
+}
 .switch__active {
   color: #fff !important;
   font-size: 14px;

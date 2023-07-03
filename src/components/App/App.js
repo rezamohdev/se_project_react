@@ -11,6 +11,7 @@ import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { Route } from 'react-router-dom/cjs/react-router-dom';
 import Profile from '../Profile/Profile';
 import AddItemModal from '../AddItemModal/AddItemModal';
+import api from '../../utils/Api';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
@@ -21,6 +22,7 @@ function App() {
   const [dayType, setDayType] = React.useState(true);
   // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
+  const [clothingItems, setClothingItems] = React.useState([]);
   function handleToggleSwitchChange(e) {
     currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
   }
@@ -57,8 +59,14 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   }
-  const handleOnAddItem = (values) => {
-    console.log(values)
+  const handleOnAddItem = (item) => {
+    console.log(item)
+    api.addItem(item).then((newItem) => {
+      setClothingItems([newItem, ...clothingItems]);
+    }).catch((err) => {
+      console.error(err);
+    });
+
   }
   // const toggleMobileMenu = () => {
 
@@ -72,7 +80,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Main onSelectCard={handleSelectedCard} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
+            <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
           </Route>
           <Route path="/profile">
             <Profile />

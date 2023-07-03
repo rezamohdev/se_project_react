@@ -4,7 +4,7 @@ import { defaultClothingItems, weatherOptions } from '../../utils/constants';
 import WeatherBackground from '../WeatherCard/WeatherCard ';
 import ItemCard from '../ItemCard/ItemCard';
 import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
-function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
+function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
     const { currentTempratureUnit } = React.useContext(CurrentTempratureUnitContext);
     const temp = weatherTemp?.temprature?.[currentTempratureUnit] || 999;
     const currenTemp = weatherTemp?.weather?.temperature?.[currentTempratureUnit];
@@ -34,7 +34,7 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType }) {
                 {/* <p>Day or night: {`${dayType}`}</p> */}
 
                 <div className="card-container">
-                    {filteredCards.map((item) => {
+                    {cards.map((item) => {
                         return (<ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />)
                     }
                     )}
