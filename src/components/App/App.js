@@ -15,13 +15,14 @@ import api from '../../utils/Api';
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 
 function App() {
+
   const [activeModal, setActiveModal] = React.useState("");
+  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
   const [cardBackground, setCardBackground] = React.useState("Clear");
   const [location, setLocation] = React.useState("");
   const [dayType, setDayType] = React.useState(true);
-  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
 
@@ -110,7 +111,7 @@ function App() {
       <Footer />
       {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
-      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onConfirm={handleCardDelete(selectedCard)} />)}
+      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={handleCardDelete(selectedCard)} />)}
     </div >
   );
 }
