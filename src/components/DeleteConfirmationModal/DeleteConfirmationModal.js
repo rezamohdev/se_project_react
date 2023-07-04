@@ -4,7 +4,7 @@ function DeleteConfirmationModal({ onClose, onConfirm, }) {
     return (
         <div className="modal modal__type_confirm">
             <div className="modal__content">
-                <div className="modal__body">
+                <div className="modal__content-body">
                     <button className="modal__close" onClick={onClose}></button>
                     <p className="modal__text">Are you sure you want to delete this item?
                         This action is irreversible.</p>

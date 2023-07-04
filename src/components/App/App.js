@@ -76,11 +76,12 @@ function App() {
   }
   const handleCardDelete = (card) => {
     console.log("card delete confirmation logged !");
-    api.removeItem(card).then(() => {
-      setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
-    }).catch((err) => {
-      console.error(err);
-    })
+    api.removeItem(card.id).
+      then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+      }).catch((err) => {
+        console.error(err);
+      })
   }
   const openConfirmationModal = () => {
     console.log('confrim delete modal opened!');
@@ -108,8 +109,8 @@ function App() {
       </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
-      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDelete={openConfirmationModal}> </ItemModal>)}
-      {activeModal === "confirm" && (<DeleteConfirmationModal card={selectedCard} onClose={handleCloseModal} onConfirm={handleCardDelete(card)} />)}
+      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
+      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onConfirm={handleCardDelete(selectedCard)} />)}
     </div >
   );
 }
