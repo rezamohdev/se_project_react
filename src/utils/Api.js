@@ -2,7 +2,7 @@
 const BASE_URL = 'https://my-json-server.typicode.com/rezamohdev/se_project_react';
 
 const handleServerResponse = (res) => {
-    return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
+    return res.ok() ? res.json() : Promise.reject(`Error:${res.status}`);
 }
 
 
