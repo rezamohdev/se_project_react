@@ -46,10 +46,7 @@ function App() {
           setDayType(false)
         }
         // getting items
-        // here is an example
         getItemList();
-
-
 
         // Weather Api catch
       }).catch((err) => {
@@ -64,6 +61,8 @@ function App() {
       return api.getItemList().then((data) => {
         setClothingItems(data);
         // daatabase api catch
+      }).catch((err) => {
+        console.error(err);
       });
     }
     // here we call handleSubmit passing the request
