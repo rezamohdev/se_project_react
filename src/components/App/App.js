@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
-import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
+import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
@@ -97,7 +97,8 @@ function App() {
 
   return (
     <div className="app">
-      <CurrentTempratureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
+      <CurrentTemperatureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
+
         <Header handleOpenModal={handleOpenModal} currenLocation={location} />
 
         <Switch>
@@ -108,7 +109,7 @@ function App() {
             <Profile cards={clothingItems} onSelectCard={handleSelectedCard} />
           </Route>
         </Switch>
-      </CurrentTempratureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
