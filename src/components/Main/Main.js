@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.css';
 import { defaultClothingItems, weatherOptions } from '../../utils/constants';
-import WeatherBackground from '../WeatherCard/WeatherCard ';
+import WeatherCard from '../WeatherCard/WeatherCard ';
 import ItemCard from '../ItemCard/ItemCard';
 import { CurrentTempratureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
@@ -26,7 +26,7 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
         <div className="Main" >
             <section className="weather" id="weather-section" >
                 <span className='weather__temperature'>{currenTemp} {currentTempratureUnit === 'F' ? '°F' : '°C'}</span>
-                <WeatherBackground day={dayType} type={cardBackground} />
+                <WeatherCard day={dayType} type={cardBackground} />
             </section>
             <section className="items" id="items-section" >
                 <span className='weather__suggest'>Today is {currenTemp}{currentTempratureUnit === 'F' ? '°F' : '°C'} / You may want to wear:</span>

@@ -1,7 +1,7 @@
 import { weatherOptions } from "../../utils/constants";
 import "./WeatherCard.css";
 
-function WeatherBackground({ day, type }) {
+function WeatherCard({ day, type }) {
     // weatherOptions.find((item) => console.log(item.day === day && item.type === type));
     const weatherOption = weatherOptions.find((item) => {
         return item.day === day && item.type === type
@@ -12,4 +12,4 @@ function WeatherBackground({ day, type }) {
     );
 }
 
-export default WeatherBackground;
+export default WeatherCard;
