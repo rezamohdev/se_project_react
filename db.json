@@ -13,12 +13,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
     },
     {
-      "id": 2,
-      "name": "Cap",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
       "id": 3,
       "name": "Coat",
       "weather": "cold",
@@ -67,12 +61,6 @@
       "id": 16
     },
     {
-      "name": "T-Shirt",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
-      "id": 17
-    },
-    {
       "name": "www",
       "weather": "Cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
@@ -85,12 +73,6 @@
       "id": 19
     },
     {
-      "name": "www",
-      "weather": "Hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
-      "id": 20
-    },
-    {
       "name": "test",
       "weather": "Warm",
       "id": 21
@@ -99,6 +81,48 @@
       "name": "www",
       "weather": "Warm",
       "id": 23
+    },
+    {
+      "name": "V -shirt",
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/02/32/30/10/1000_F_232301056_EyIz7lmG0uGU6xHdjA0QtSDYPFKlhFRl.jpg",
+      "weather": "",
+      "id": 24
+    },
+    {
+      "name": "V -shirt",
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/02/32/30/10/1000_F_232301056_EyIz7lmG0uGU6xHdjA0QtSDYPFKlhFRl.jpg",
+      "weather": "Hot",
+      "id": 25
+    },
+    {
+      "name": "Reels",
+      "imageUrl": "https://media.istockphoto.com/id/905647402/vector/beach-summer-holidays.jpg?s=612x612&w=0&k=20&c=yjSvROxvh-HFkrSY4Kt92lZrmxk7oezm9CX95Wqe1V4=",
+      "weather": "Hot",
+      "id": 26
+    },
+    {
+      "name": "Cap",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLasUX8exElj6-CiD8WKPApvwjCIIzrDc-qQ&usqp=CAU",
+      "weather": "Hot",
+      "id": 27
+    },
+    {
+      "name": "Shoes",
+      "imageUrl": "data:image/jpeg;base64,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",
+      "weather": "Hot",
+      "id": 28
+    },
+    {
+      "name": "Long Skirt",
+      "imageUrl": "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-a-pleated-skirt.jpg",
+      "weather": "Hot",
+      "id": 29
+    },
+    {
+      "name": "Sun glasses",
+      "imageUrl": "https://img.freepik.com/premium-vector/glasses-vector-cartoon-vector-illustration_484148-165.jpg?w=2000",
+      "weather": "Hot",
+      "id": 30
     }
   ]
 }

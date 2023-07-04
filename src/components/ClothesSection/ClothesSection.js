@@ -3,7 +3,7 @@ import './ClothesSection.css';
 import ItemCard from "../ItemCard/ItemCard";
 import { weatherOptions } from '../../utils/constants';
 
-function ClothesSection({ sectionData }) {
+function ClothesSection({ sectionData, onSelectCard }) {
     return (
         <div className="clothes-section">
             <div className="clothes-section__header">
@@ -12,7 +12,7 @@ function ClothesSection({ sectionData }) {
             </div>
             <div className="card-container">
                 {sectionData.map((item) => {
-                    return (<ItemCard card={item} key={item.id} />)
+                    return (<ItemCard card={item} key={item.id} onSelectCard={onSelectCard} />)
                 }
                 )}
             </div>

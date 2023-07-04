@@ -80,6 +80,7 @@ function App() {
     api.removeItem(card.id).
       then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        handleCloseModal();
       }).catch((err) => {
         console.error(err);
       })
@@ -104,14 +105,14 @@ function App() {
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
           </Route>
           <Route path="/profile">
-            <Profile cards={clothingItems} />
+            <Profile cards={clothingItems} onSelectCard={handleSelectedCard} />
           </Route>
         </Switch>
       </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
-      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={handleCardDelete(selectedCard)} />)}
+      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} />)}
     </div >
   );
 }
