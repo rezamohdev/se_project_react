@@ -9,7 +9,7 @@ function Header({ handleOpenModal, currenLocation }) {
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
 
     return (
-        <div>
+        <header>
             <nav className='nav'>
                 <img src={logo} alt="logo" className="nav__logo" />
                 <button className='nav__menu-button'></button>
@@ -25,7 +25,7 @@ function Header({ handleOpenModal, currenLocation }) {
                 </menu>
             </nav>
 
-            <header className="header">
+            <div className="header">
                 <div className="header__left-side">
                     <Link to="/">
                         <img src={logo} alt="logo" className="header__logo" />
@@ -42,8 +42,8 @@ function Header({ handleOpenModal, currenLocation }) {
                         <img className="header__avatar" src={avatarImage} alt='avatar' />
                     </Link>
                 </div>
-            </header>
-        </div>
+            </div>
+        </header>
     );
 }
 export default Header;

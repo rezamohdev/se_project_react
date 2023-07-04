@@ -1,10 +1,13 @@
 // const BASE_URL = 'http://localhost:3001';
 const BASE_URL = 'https://my-json-server.typicode.com/rezamohdev/se_project_react';
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
     return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
 }
 
+function request(url, options) {
+    return fetch(url, options).then(handleServerResponse)
+}
 
 const addItem = ({ name, imageUrl, weather }) => {
     return fetch(`${BASE_URL}/items`, {
@@ -14,6 +17,13 @@ const addItem = ({ name, imageUrl, weather }) => {
             name, imageUrl, weather
         })
     }).then(handleServerResponse);
+    // request(`${BASE_URL}/items`, {
+    //     method: "POST",
+    //     headers: { 'content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //         name, imageUrl, weather
+    //     })
+    // })
 };
 
 const removeItem = (id) => {
@@ -31,6 +41,6 @@ const getItemList = () => {
     }).then(handleServerResponse);
 };
 
-const api = { addItem, removeItem, getItemList, };
+const api = { addItem, removeItem, getItemList };
 
 export default api;

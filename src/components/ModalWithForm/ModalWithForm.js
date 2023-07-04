@@ -1,6 +1,7 @@
 import React from 'react';
 import './ModalWithForm.css';
-function ModalWithForm({ children, buttonText, title, onClose, name, isOpen, onSubmit }) {
+import { useEscape } from '../../hooks/useEscape';
+function ModalWithForm({ children, buttonText, title, onClose, name, isOpen, onSubmit, }) {
     return (
         <div className={`modal modal__type_${name}`}>
             <div className='modal__content'>
