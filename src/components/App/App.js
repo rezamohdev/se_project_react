@@ -23,7 +23,7 @@ function App() {
   const [cardBackground, setCardBackground] = React.useState("Clear");
   const [location, setLocation] = React.useState("");
   const [dayType, setDayType] = React.useState(true);
-  const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -51,7 +51,7 @@ function App() {
   }, []);
 
   const handleToggleSwitchChange = (e) => {
-    currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
+    currentTemperatureUnit === 'C' ? setCurrentTemperatureUnit('F') : setCurrentTemperatureUnit('C');
   }
   const handleOpenModal = () => {
     setActiveModal("open");
@@ -97,7 +97,7 @@ function App() {
 
   return (
     <div className="app">
-      <CurrentTemperatureUnitContext.Provider value={{ currentTempratureUnit, handleToggleSwitchChange }}>
+      <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
 
         <Header handleOpenModal={handleOpenModal} currenLocation={location} />
 
