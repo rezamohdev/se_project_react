@@ -101,6 +101,98 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 17
+    },
+    {
+      "name": "www",
+      "weather": "Cold",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
+      "id": 18
+    },
+    {
+      "name": "ddd",
+      "weather": "Cold",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
+      "id": 19
+    },
+    {
+      "name": "www",
+      "weather": "Hot",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
+      "id": 20
+    },
+    {
+      "name": "test",
+      "weather": "Warm",
+      "id": 21
+    },
+    {
+      "name": "Hat",
+      "weather": "Hot",
+      "id": 22
+    },
+    {
+      "name": "www",
+      "weather": "Warm",
+      "id": 23
+    },
+    {
+      "name": "ddd",
+      "weather": "Hot",
+      "id": 24
+    },
+    {
+      "name": "www",
+      "imageUrl": "https://images.unsplash.com/photo-1681913781129-22837cab0e06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "weather": "Hot",
+      "id": 25
+    },
+    {
+      "name": "www",
+      "imageUrl": "https://images.unsplash.com/photo-1681913781129-22837cab0e06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80\\",
+      "weather": "Hot",
+      "id": 26
+    },
+    {
+      "name": "ee",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 27
+    },
+    {
+      "name": "ee",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 28
+    },
+    {
+      "name": "ee",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 29
+    },
+    {
+      "name": "ee",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 30
+    },
+    {
+      "name": "ee",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 31
+    },
+    {
+      "name": "V -shirt",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTic_90QUWay5vaI5_zJ-OCyUXF6Th71g4WYmWR56o8weX9zOPhuIzxL-mf2fNhfEM4JYY&usqp=CAU",
+      "weather": "Hot",
+      "id": 32
+    },
+    {
+      "name": "is this my V shirt?",
+      "imageUrl": "https://images.unsplash.com/photo-1681913781129-22837cab0e06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "weather": "Hot",
+      "id": 33
     }
   ]
 }

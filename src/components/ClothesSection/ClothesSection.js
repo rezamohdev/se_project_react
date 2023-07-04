@@ -12,7 +12,7 @@ function ClothesSection({ sectionData }) {
             </div>
             <div className="card-container">
                 {sectionData.map((item) => {
-                    return (<ItemCard card={item} key={item._id} />)
+                    return (<ItemCard card={item} key={item.id} />)
                 }
                 )}
             </div>

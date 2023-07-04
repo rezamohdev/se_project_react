@@ -12,6 +12,7 @@ import { Route } from 'react-router-dom/cjs/react-router-dom';
 import Profile from '../Profile/Profile';
 import AddItemModal from '../AddItemModal/AddItemModal';
 import api from '../../utils/Api';
+import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
@@ -23,9 +24,6 @@ function App() {
   // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [currentTempratureUnit, setCurrentTempratureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
-  function handleToggleSwitchChange(e) {
-    currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
-  }
 
   React.useEffect(() => {
     getWeatherForecast().
@@ -43,12 +41,17 @@ function App() {
         } else if (Date.now() <= sunset) {
           setDayType(false)
         }
+        api.getItemList().then((data) => {
+          setClothingItems(data);
+        })
       }).catch((err) => {
         console.error(err);
       });
   }, []);
 
-
+  const handleToggleSwitchChange = (e) => {
+    currentTempratureUnit === 'C' ? setCurrentTempratureUnit('F') : setCurrentTempratureUnit('C');
+  }
   const handleOpenModal = () => {
     setActiveModal("open");
   }
@@ -61,11 +64,27 @@ function App() {
   }
   const handleOnAddItem = (item) => {
     console.log(item)
-    api.addItem(item).then((newItem) => {
-      setClothingItems([newItem, ...clothingItems]);
+    api.addItem(item).
+      then((newItem) => {
+        console.log(newItem);
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseModal();
+      }).
+      catch((err) => {
+        console.error(err);
+      });
+  }
+  const handleCardDelete = (card) => {
+    console.log("card delete confirmation logged !");
+    api.removeItem(card).then(() => {
+      setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
     }).catch((err) => {
       console.error(err);
-    });
+    })
+  }
+  const openConfirmationModal = () => {
+    console.log('confrim delete modal opened!');
+    setActiveModal("confirm")
   }
 
   // const toggleMobileMenu = () => {
@@ -89,7 +108,8 @@ function App() {
       </CurrentTempratureUnitContext.Provider>
       <Footer />
       {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem} />)}
-      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard}> </ItemModal>)}
+      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDelete={openConfirmationModal}> </ItemModal>)}
+      {activeModal === "confirm" && (<DeleteConfirmationModal card={selectedCard} onClose={handleCloseModal} onConfirm={handleCardDelete(card)} />)}
     </div >
   );
 }

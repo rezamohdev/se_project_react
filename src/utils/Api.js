@@ -1,18 +1,35 @@
-const BASE_URL = 'https://localhost:3001';
+const BASE_URL = 'http://localhost:3001';
 
 const handleServerResponse = (res) => {
-    return res.okay ? res.json() : Promise.reject(`Error:${res.status}`);
+    return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
 }
 
 
-const addItem = ({ name, weather, ImageUrl }) => {
+// const addItem = ({ name, ImageUrl, weather }) => {
+//     return fetch(`${BASE_URL}/items`, {
+//         method: "POST",
+//         headers: { 'content-Type': 'application/json' },
+//         body: JSON.stringify({
+//             name, ImageUrl, weather
+
+//         })
+//     }).then(handleServerResponse);
+// };
+
+const addItem = ({ name, imageUrl, weather }) => {
     return fetch(`${BASE_URL}/items`, {
         method: "POST",
         headers: { 'content-Type': 'application/json' },
         body: JSON.stringify({
-            name, weather, ImageUrl
-
+            name, imageUrl, weather
         })
+    }).then(handleServerResponse);
+};
+
+const removeItem = (id) => {
+    return fetch(`${BASE_URL}/items/${id}`, {
+        method: "DELETE",
+        headers: { 'content-Type': 'application/json' },
     }).then(handleServerResponse);
 };
 
@@ -24,6 +41,6 @@ const getItemList = () => {
     }).then(handleServerResponse);
 };
 
-const api = { addItem, getItemList };
+const api = { addItem, removeItem, getItemList, };
 
 export default api;
