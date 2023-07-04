@@ -10,35 +10,29 @@ function request(url, options) {
 }
 
 const addItem = ({ name, imageUrl, weather }) => {
-    return fetch(`${BASE_URL}/items`, {
+    return request(`${BASE_URL}/items`, {
         method: "POST",
         headers: { 'content-Type': 'application/json' },
         body: JSON.stringify({
             name, imageUrl, weather
         })
-    }).then(handleServerResponse);
-    // request(`${BASE_URL}/items`, {
-    //     method: "POST",
-    //     headers: { 'content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //         name, imageUrl, weather
-    //     })
-    // })
+    });
+
 };
 
 const removeItem = (id) => {
-    return fetch(`${BASE_URL}/items/${id}`, {
+    return request(`${BASE_URL}/items/${id}`, {
         method: "DELETE",
         headers: { 'content-Type': 'application/json' },
-    }).then(handleServerResponse);
+    });
 };
 
 const getItemList = () => {
-    return fetch(`${BASE_URL}/items`, {
+    return request(`${BASE_URL}/items`, {
         headers: {
             'content-Type': 'application/json'
         },
-    }).then(handleServerResponse);
+    });
 };
 
 const api = { addItem, removeItem, getItemList };
