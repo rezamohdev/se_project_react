@@ -3,12 +3,12 @@ import './ClothesSection.css';
 import ItemCard from "../ItemCard/ItemCard";
 import { weatherOptions } from '../../utils/constants';
 
-function ClothesSection({ sectionData, onSelectCard }) {
+function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
     return (
         <div className="clothes-section">
             <div className="clothes-section__header">
                 <span className="clothes-section__title">Your items</span>
-                <button className="clothes-section__button">+ Add new</button>
+                <button className="clothes-section__button" onClick={handleAddButton}>+ Add new</button>
             </div>
             <div className="card-container">
                 {sectionData.map((item) => {

@@ -6,17 +6,6 @@ const handleServerResponse = (res) => {
 }
 
 
-// const addItem = ({ name, ImageUrl, weather }) => {
-//     return fetch(`${BASE_URL}/items`, {
-//         method: "POST",
-//         headers: { 'content-Type': 'application/json' },
-//         body: JSON.stringify({
-//             name, ImageUrl, weather
-
-//         })
-//     }).then(handleServerResponse);
-// };
-
 const addItem = ({ name, imageUrl, weather }) => {
     return fetch(`${BASE_URL}/items`, {
         method: "POST",

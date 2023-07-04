@@ -25,7 +25,7 @@ function Header({ handleOpenModal, currenLocation }) {
                 </menu>
             </nav>
 
-            <div className="header">
+            <header className="header">
                 <div className="header__left-side">
                     <Link to="/">
                         <img src={logo} alt="logo" className="header__logo" />
@@ -36,13 +36,13 @@ function Header({ handleOpenModal, currenLocation }) {
                     <ToggleSwitch />
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
                     <Link to="/profile" className="header__link">
-                        <p className="header__user-title">Terrence Tegegne</p>
+                        <p className="header__user-title">Bamyaan Budha</p>
                     </Link>
                     <Link to="/profile">
                         <img className="header__avatar" src={avatarImage} alt='avatar' />
                     </Link>
                 </div>
-            </div>
+            </header>
         </div>
     );
 }

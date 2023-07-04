@@ -42,9 +42,15 @@ function App() {
         } else if (Date.now() <= sunset) {
           setDayType(false)
         }
+        // getting items
         api.getItemList().then((data) => {
           setClothingItems(data);
-        })
+          // daatabase api catch
+        }).catch((err) => {
+          console.error(err);
+        });
+
+        // Weather Api catch
       }).catch((err) => {
         console.error(err);
       });
@@ -98,15 +104,13 @@ function App() {
   return (
     <div className="app">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
-
         <Header handleOpenModal={handleOpenModal} currenLocation={location} />
-
         <Switch>
           <Route exact path="/">
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
           </Route>
           <Route path="/profile">
-            <Profile cards={clothingItems} onSelectCard={handleSelectedCard} />
+            <Profile cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} />
           </Route>
         </Switch>
       </CurrentTemperatureUnitContext.Provider>
