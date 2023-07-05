@@ -36,7 +36,7 @@ function Header({ handleOpenModal, currenLocation }) {
                     <ToggleSwitch />
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
                     <Link to="/profile" className="header__link">
-                        <p className="header__user-title">Bamyaan Budha</p>
+                        <p className="header__user-title">John Doe</p>
                     </Link>
                     <Link to="/profile">
                         <img className="header__avatar" src={avatarImage} alt='avatar' />
