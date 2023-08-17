@@ -30,7 +30,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
 
   React.useEffect(() => {
