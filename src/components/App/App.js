@@ -16,6 +16,7 @@ import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmati
 import { useEscape } from '../../hooks/useEscape';
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal ';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -151,9 +152,9 @@ function App() {
           <Route exact path="/">
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
           </Route>
-          <Route path="/profile">
-            <Profile cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} />
-          </Route>
+          <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn} cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} >
+            <Profile />
+          </ProtectedRoute>
         </Switch>
       </CurrentTemperatureUnitContext.Provider>
       <Footer />
