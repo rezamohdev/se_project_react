@@ -14,6 +14,7 @@ import AddItemModal from '../AddItemModal/AddItemModal';
 import api from '../../utils/Api';
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 import { useEscape } from '../../hooks/useEscape';
+import LoginModal from '../LoginModal/LoginModal';
 
 function App() {
 
@@ -126,6 +127,12 @@ function App() {
     console.log('confrim delete modal opened!');
     setActiveModal("confirm")
   }
+  const handleOpenLoginModal = () => {
+    setActiveModal('login');
+  }
+  const handleOpenSignupModal = () => {
+    setActiveModal('singup')
+  }
   useEscape(handleCloseModal)
 
 
@@ -137,7 +144,7 @@ function App() {
   return (
     <div className="app">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
-        <Header handleOpenModal={handleOpenModal} currenLocation={location} />
+        <Header handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
         <Switch>
           <Route exact path="/">
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
@@ -153,6 +160,7 @@ function App() {
       />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
       {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
+      {activeModal === "login" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' />)}
     </div >
   );
 }
