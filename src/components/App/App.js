@@ -160,7 +160,8 @@ function App() {
       />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
       {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
-      {activeModal === "login" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' />)}
+      {activeModal === "login" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
+      {activeModal === "sginup" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
     </div >
   );
 }

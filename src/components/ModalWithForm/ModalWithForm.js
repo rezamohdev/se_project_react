@@ -1,7 +1,7 @@
 import React from 'react';
 import './ModalWithForm.css';
 import { useEscape } from '../../hooks/useEscape';
-function ModalWithForm({ children, footerChildren, buttonText, title, onClose, name, isOpen, onSubmit, handleOpenSignupModal }) {
+function ModalWithForm({ children, buttonText, title, onClose, name, isOpen, onSubmit, }) {
     return (
         <div className={`modal modal__type_${name}`}>
             <div className='modal__content'>
@@ -9,7 +9,7 @@ function ModalWithForm({ children, footerChildren, buttonText, title, onClose, n
                 <h3 className='modal__title'>{title}</h3>
                 <form className='form modal__form' name={name} onSubmit={onSubmit}>
                     {children}
-                    <link to="/signup" onClick={handleOpenSignupModal} className='modal__button' type="submit" >{buttonText}</link>
+                    <button className='modal__button' type="submit" >{buttonText}</button>
 
                 </form>
             </div>
