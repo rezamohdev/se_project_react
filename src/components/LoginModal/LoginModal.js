@@ -2,7 +2,7 @@ import React from "react";
 import './LoginModal.css';
 import { useEscape } from '../../hooks/useEscape';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-function LoginModal({ handleSubmit, handleCloseModal, isOpen = { isOpen }, buttonText, handleChange }) {
+function LoginModal({ handleSubmit, handleCloseModal, isOpen = { isOpen }, buttonText, handleChange, }) {
     return (
         <ModalWithForm isOpen={isOpen} title="Log in" onClose={handleCloseModal} name='login' buttonText={buttonText} onSubmit={handleSubmit}>
             <fieldset className='form__fieldset'>
@@ -11,6 +11,7 @@ function LoginModal({ handleSubmit, handleCloseModal, isOpen = { isOpen }, butto
                 <label htmlFor='password' className='form__label'>Password</label>
                 <input id='password' type='password' className='form__input' placeholder='Password' name="password" onChange={handleChange} />
             </fieldset>
+            <button className="modal__register">Or Register</button>
         </ModalWithForm >
     );
 }
