@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3001';
-const BASE_URL = 'https://my-json-server.typicode.com/rezamohdev/se_project_react';
+// const BASE_URL = 'https://my-json-server.typicode.com/rezamohdev/se_project_react';
+const BASE_URL = 'http://localhost:3001';
 
 export const handleServerResponse = (res) => {
     return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
