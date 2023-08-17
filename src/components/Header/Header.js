@@ -4,7 +4,7 @@ import logo from "../../images/Logo.svg";
 import avatarImage from '../../images/avatar.svg';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-function Header({ handleOpenModal, currenLocation }) {
+function Header({ handleOpenModal, handleOpenLoginModal, handleOpenSigninModal, currenLocation }) {
 
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
 
@@ -36,8 +36,8 @@ function Header({ handleOpenModal, currenLocation }) {
                     <ToggleSwitch />
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
 
-                    <button className='header__login-button'>Log in</button>
-                    <button className='header__signup-button'>Sign up</button>
+                    <button className='header__login-button' onClick={handleOpenLoginModal}>Log in</button>
+                    <button className='header__signup-button' onClick={handleOpenSigninModal}>Sign up</button>
                     <Link to="/profile" className="header__link">
                         <p className="header__user-title">John Doe</p>
                     </Link>
