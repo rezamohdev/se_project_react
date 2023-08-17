@@ -15,6 +15,7 @@ import api from '../../utils/Api';
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 import { useEscape } from '../../hooks/useEscape';
 import LoginModal from '../LoginModal/LoginModal';
+import RegisterModal from '../RegisterModal/RegisterModal ';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
 
   React.useEffect(() => {
@@ -131,7 +133,7 @@ function App() {
     setActiveModal('login');
   }
   const handleOpenSignupModal = () => {
-    setActiveModal('singup')
+    setActiveModal('register')
   }
   useEscape(handleCloseModal)
 
@@ -144,7 +146,7 @@ function App() {
   return (
     <div className="app">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
-        <Header handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
+        <Header isLoggedIn={isLoggedIn} handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
         <Switch>
           <Route exact path="/">
             <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
@@ -160,8 +162,8 @@ function App() {
       />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
       {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
-      {activeModal === "login" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
-      {activeModal === "sginup" && (<LoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
+      {activeModal === "login" && (<LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
+      {activeModal === "register" && (<RegisterModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} buttonText='Next' handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />)}
     </div >
   );
 }
