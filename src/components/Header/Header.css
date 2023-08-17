@@ -160,6 +160,42 @@
 .header__button:hover {
   opacity: 0.6;
 }
+.header__login-button {
+  cursor: pointer;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  padding: none;
+  margin: 0;
+  font-family: "Familjen Grotesk";
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: opacity ease 450ms;
+}
+.header__login-button:hover {
+  opacity: 0.6;
+}
+.header__signup-button {
+  cursor: pointer;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  padding: none;
+  margin: 0;
+  font-family: "Familjen Grotesk";
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: opacity ease 450ms;
+}
+.header__signup-button:hover {
+  opacity: 0.6;
+}
 .header__user-title {
   font-family: "Familjen Grotesk";
   font-style: normal;

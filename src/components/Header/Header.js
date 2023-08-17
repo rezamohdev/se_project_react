@@ -35,6 +35,9 @@ function Header({ handleOpenModal, currenLocation }) {
                 <div className="header__right-side">
                     <ToggleSwitch />
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
+
+                    <button className='header__login-button'>Log in</button>
+                    <button className='header__signup-button'>Sign up</button>
                     <Link to="/profile" className="header__link">
                         <p className="header__user-title">John Doe</p>
                     </Link>
