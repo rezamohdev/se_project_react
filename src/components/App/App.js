@@ -5,6 +5,7 @@ import Main from '../Main/Main';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
 import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
@@ -183,41 +184,43 @@ function App() {
 
 
   return (
-    <div className="app">
-      <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
-        <Header isLoggedIn={isLoggedIn} handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
-        <Switch>
-          <Route exact path="/">
-            <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
-          </Route>
-          <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn} cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} >
-            <Profile />
-          </ProtectedRoute>
-        </Switch>
-      </CurrentTemperatureUnitContext.Provider>
-      <Footer />
-      {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem}
-        buttonText={isLoading ? 'Saving...' : 'Add garment'}
-      />)}
-      {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
-      {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
-      {activeModal === "login" && (
-        <LoginModal
-          handleCloseModal={handleCloseModal}
-          isOpen={activeModal === "login"}
-          buttonText='Login'
-          handleOpenSignupModal={handleOpenSignupModal}
-          onSignInUser={onSignInUser}
+    <CurrentUserContext.Provider value={currecnUser}>
+      <div className="app">
+        <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
+          <Header isLoggedIn={isLoggedIn} handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
+          <Switch>
+            <Route exact path="/">
+              <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
+            </Route>
+            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn} cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} >
+              <Profile />
+            </ProtectedRoute>
+          </Switch>
+        </CurrentTemperatureUnitContext.Provider>
+        <Footer />
+        {activeModal === "open" && (<AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "open"} onAddItem={handleOnAddItem}
+          buttonText={isLoading ? 'Saving...' : 'Add garment'}
         />)}
-      {activeModal === "register" && (
-        <RegisterModal
-          handleCloseModal={handleCloseModal}
-          isOpen={activeModal === "login"}
-          buttonText='Next'
-          handleOpenLoginModal={handleOpenLoginModal}
-          handleOpenSignupModal={handleOpenSignupModal}
-          onRegisterUser={onRegisterUser} />)}
-    </div >
+        {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
+        {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            buttonText='Login'
+            handleOpenSignupModal={handleOpenSignupModal}
+            onSignInUser={onSignInUser}
+          />)}
+        {activeModal === "register" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            buttonText='Next'
+            handleOpenLoginModal={handleOpenLoginModal}
+            handleOpenSignupModal={handleOpenSignupModal}
+            onRegisterUser={onRegisterUser} />)}
+      </div >
+    </CurrentUserContext.Provider>
   );
 }
 
