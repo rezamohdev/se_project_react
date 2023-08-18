@@ -33,6 +33,7 @@ function App() {
   const [clothingItems, setClothingItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currecnUser, setCurrentUser] = React.useState({});
   const history = useHistory();
 
 
