@@ -26,6 +26,16 @@ const signinUser = ({ email, password }) => {
     })
 }
 
-const auth = { signupUser, signinUser };
+const checkToken = (token) => {
+    return request(`${BASE_URL}/user/me`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+        }
+    })
+}
+
+const auth = { signupUser, signinUser, checkToken };
 
 export default auth;

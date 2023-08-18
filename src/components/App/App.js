@@ -58,6 +58,7 @@ function App() {
       }).catch((err) => {
         console.error(err);
       });
+    handleTokenCheck();
   }, []);
 
   function getItemList() {
@@ -124,6 +125,30 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
+  function onSignInUser({ email, password }) {
+    function makeRequest() {
+      return auth.signinUser({ email, password }).then((data) => {
+        console.log(data);
+        if (data.jwt) {
+          handleLogin();
+          localStorage.setItem('jwt', data.jwt);
+          history.push('/profile')
+          handleCloseModal();
+        }
+
+      })
+    }
+    handleSubmit(makeRequest);
+  }
+  function handleTokenCheck() {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      auth.checkToken(jwt);
+      handleLogin();
+      history.push('/profile');
+
+    }
+  }
   const handleToggleSwitchChange = (e) => {
     currentTemperatureUnit === 'C' ? setCurrentTemperatureUnit('F') : setCurrentTemperatureUnit('C');
   }
@@ -136,6 +161,9 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  }
+  const handleLogin = () => {
+    setIsLoggedIn(true);
   }
   const openConfirmationModal = () => {
     console.log('confrim delete modal opened!');
@@ -173,7 +201,14 @@ function App() {
       />)}
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
       {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
-      {activeModal === "login" && (<LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
+      {activeModal === "login" && (
+        <LoginModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "login"}
+          buttonText='Login'
+          handleOpenSignupModal={handleOpenSignupModal}
+          onSignInUser={onSignInUser}
+        />)}
       {activeModal === "register" && (
         <RegisterModal
           handleCloseModal={handleCloseModal}

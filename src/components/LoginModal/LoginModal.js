@@ -3,9 +3,17 @@ import './LoginModal.css';
 import { Link } from 'react-router-dom';
 import { useEscape } from '../../hooks/useEscape';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-function LoginModal({ handleSubmit, handleCloseModal, isOpen = { isOpen }, buttonText, handleChange, handleOpenSignupModal }) {
+import { useForm } from "../../hooks/useForm";
+function LoginModal({ onSignInUser, handleCloseModal, isOpen = { isOpen }, buttonText, handleOpenSignupModal }) {
+    const { values, handleChange, setValues } = useForm({})
+
+    const handleOnSubmit = (evt) => {
+        evt.preventDefault();
+        console.log(values);
+        onSignInUser(values);
+    }
     return (
-        <ModalWithForm isOpen={isOpen} title="Log in" onClose={handleCloseModal} name='login' buttonText={buttonText} onSubmit={handleSubmit}>
+        <ModalWithForm isOpen={isOpen} title="Log in" onClose={handleCloseModal} name='login' buttonText={buttonText} onSubmit={handleOnSubmit}>
             <fieldset className='form__fieldset'>
                 <label htmlFor='email' className='form__label'>Email</label>
                 <input type='email' id='email' className='form__input' placeholder='Email' name="email" minLength={1} maxLength={30} onChange={handleChange} />
