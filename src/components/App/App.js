@@ -8,10 +8,11 @@ import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperature
 import './App.css'
 import { getWeatherForecast, weatherData, weatherName } from '../../utils/WeatherApi';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
-import { Route } from 'react-router-dom/cjs/react-router-dom';
+import { Route, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import Profile from '../Profile/Profile';
 import AddItemModal from '../AddItemModal/AddItemModal';
 import api from '../../utils/Api';
+import auth from '../../utils/auth';
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal';
 import { useEscape } from '../../hooks/useEscape';
 import LoginModal from '../LoginModal/LoginModal';
@@ -30,7 +31,8 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const history = useHistory();
 
 
   React.useEffect(() => {
@@ -112,7 +114,16 @@ function App() {
     // here we call handleSubmit passing the request
     handleSubmit(makeRequest);
   }
-
+  function onRegisterUser({ name, avatar, email, password }) {
+    function makeRequest() {
+      return auth.signupUser({ name, avatar, email, password }).then((user) => {
+        console.log(user);
+        history.push('/signin');
+        handleCloseModal();
+      })
+    }
+    handleSubmit(makeRequest);
+  }
   const handleToggleSwitchChange = (e) => {
     currentTemperatureUnit === 'C' ? setCurrentTemperatureUnit('F') : setCurrentTemperatureUnit('C');
   }
@@ -137,7 +148,6 @@ function App() {
     setActiveModal('register')
   }
   useEscape(handleCloseModal)
-
 
   // const toggleMobileMenu = () => {
 
@@ -164,7 +174,14 @@ function App() {
       {activeModal === "preview" && (<ItemModal onClose={handleCloseModal} selectedCard={selectedCard} onDeleteItem={openConfirmationModal}> </ItemModal>)}
       {activeModal === "confirm" && (<DeleteConfirmationModal onClose={handleCloseModal} onDeleteConfirm={() => handleCardDelete(selectedCard)} buttonText={isLoading ? 'Deleting...' : 'Yes, delete item'} />)}
       {activeModal === "login" && (<LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} buttonText='Login' handleOpenSignupModal={handleOpenSignupModal} />)}
-      {activeModal === "register" && (<RegisterModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} buttonText='Next' handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />)}
+      {activeModal === "register" && (
+        <RegisterModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "login"}
+          buttonText='Next'
+          handleOpenLoginModal={handleOpenLoginModal}
+          handleOpenSignupModal={handleOpenSignupModal}
+          onRegisterUser={onRegisterUser} />)}
     </div >
   );
 }

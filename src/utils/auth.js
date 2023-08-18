@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3001';
 import { handleServerResponse } from './Api';
+const BASE_URL = 'http://localhost:3001';
 
 function request(url, options) {
     return fetch(url, options).then(handleServerResponse)
