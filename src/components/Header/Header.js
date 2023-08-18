@@ -4,10 +4,12 @@ import logo from "../../images/Logo.svg";
 import avatarImage from '../../images/avatar.svg';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenSignupModal, currenLocation }) {
 
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-
+    const userData = React.useContext(CurrentUserContext);
+    console.log(userData);
     return (
         <header>
             <nav className='nav'>
@@ -40,7 +42,7 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
                         <p className="header__user-title">John Doe</p>
                     </Link>
                     <Link to="/profile">
-                        <img className="header__avatar" src={avatarImage} alt='avatar' />
+                        <img className="header__avatar" src={userData.avatar} alt='avatar' />
                     </Link>
                 </div>) : (<div className='header__right-side'>
                     <ToggleSwitch />
