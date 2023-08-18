@@ -9,21 +9,29 @@ function request(url, options) {
     return fetch(url, options).then(handleServerResponse)
 }
 
-const addItem = ({ name, imageUrl, weather }) => {
+const addItem = ({ name, imageUrl, weather }, token) => {
     return request(`${BASE_URL}/items`, {
         method: "POST",
-        headers: { 'content-Type': 'application/json' },
+        headers: {
+            'content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
             name, imageUrl, weather
-        })
+        }),
+
     });
 
 };
 
-const removeItem = (id) => {
+const removeItem = (id, token) => {
     return request(`${BASE_URL}/items/${id}`, {
         method: "DELETE",
-        headers: { 'content-Type': 'application/json' },
+        headers: {
+            'content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
+
     });
 };
 
@@ -32,6 +40,7 @@ const getItemList = () => {
         headers: {
             'content-Type': 'application/json'
         },
+
     });
 };
 
