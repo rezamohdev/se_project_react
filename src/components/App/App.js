@@ -146,7 +146,6 @@ function App() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       auth.checkToken(jwt);
-      handleLogin();
       history.push('/profile');
 
     }
@@ -193,8 +192,8 @@ function App() {
             <Route exact path="/">
               <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
             </Route>
-            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn} cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} >
-              <Profile />
+            <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile" >
+              <Profile cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} />
             </ProtectedRoute>
           </Switch>
         </CurrentTemperatureUnitContext.Provider>
