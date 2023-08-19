@@ -130,10 +130,10 @@ function App() {
   function onSignInUser({ email, password }) {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
-        if (data.jwt) {
-          console.log(data.jwt);
+        if (data.token) {
+          console.log(data.token);
           handleLogin();
-          localStorage.setItem('jwt', data.jwt);
+          localStorage.setItem('jwt', data.token);
           history.push('/profile')
           handleCloseModal();
         }
