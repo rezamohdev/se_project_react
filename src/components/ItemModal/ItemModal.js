@@ -1,5 +1,15 @@
+import React from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './ItemModal.css';
 function ItemModal({ onClose, selectedCard, onDeleteItem }) {
+    const currentUser = React.useContext(CurrentUserContext);
+    // Checking if the current user is the owner of the current clothing item
+    const isOwn = selectedCard.owner._id === currentUser._id;
+    // isOwn ? console.log('t') : console.log('f');
+    const itemDeleteButtonClassName = (
+        `modal__delete-button ${isOwn ? 'modal__delete-button_visible' : 'modal__delete-button_hidden'}`
+    );
+
     return (
         <div className={`modal modal__type_image`}>
             <div className='modal__content'>
@@ -10,7 +20,7 @@ function ItemModal({ onClose, selectedCard, onDeleteItem }) {
                 <div className='modal__footer' >
                     <div className='modal__footer-top'>
                         <p className='modal__paragraph modal__item-name'>{selectedCard.name}</p>
-                        <button className='modal__delete-button' onClick={onDeleteItem}>Delete item</button>
+                        <button className={itemDeleteButtonClassName} onClick={onDeleteItem}>Delete item</button>
                     </div>
                     <p className='modal__paragraph modal__weather-type'>Weather: {selectedCard.weather}</p>
                 </div>

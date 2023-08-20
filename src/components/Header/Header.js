@@ -42,8 +42,8 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
                         <p className="header__user-title">{isLoggedIn ? userData?.name : 'No logged in'}</p>
                     </Link>
                     <Link to="/profile">
-
-                        {userData?.avatar ? (<img className="header__avatar" src={userData?.avatar} alt='avatar' />) : <div className='header__avatar-placeholder'>{Array.from(userData?.name)[0].toUpperCase()}</div>}
+                        {userData?.avatar ? (<img className="header__avatar" src={userData?.avatar} alt='avatar' />) :
+                            <div className='header__avatar-placeholder'>{Array.from(userData?.name)[0].toUpperCase()}</div>}
                     </Link>
                 </div>) : (<div className='header__right-side'>
                     <ToggleSwitch />
