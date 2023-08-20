@@ -207,10 +207,30 @@
 }
 .header__avatar {
   height: 40px;
+  border-radius: 50%;
 }
 .header__link {
   text-decoration: none;
-  color: #000;
+  color: hsl(0, 0%, 0%);
+}
+.header__avatar-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-family: "Familjen Grotesk";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+  color: #fff;
 }
 
 @media only screen and (max-width: 376px) {

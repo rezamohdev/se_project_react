@@ -9,7 +9,7 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
 
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
     const userData = React.useContext(CurrentUserContext);
-    console.log(userData);
+    // const userTitle = Array.from(userData.name)[0].toUpperCase();
     return (
         <header>
             <nav className='nav'>
@@ -19,8 +19,8 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
                     <button className='nav__menu-close'></button>
                     <div className='nav__user-info'>
                         <Link to="/profile">
-                            <p className="nav__user-title">Terrence Tegegne</p>
-                            <img className="nav__avatar" src={avatarImage} alt='avatar' />
+                            <p className="nav__user-title">{'userData?.name'}</p>
+                            <img className="nav__avatar" src={'userData?.avatar'} alt='avatar' />
                         </Link>
                     </div>
                     <button className="nav__button" onClick={handleOpenModal}>+ Add clothes</button>
@@ -35,14 +35,15 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
                     <p className="header__date">{currentDate}, {currenLocation}</p>
                 </div>
 
-                {isLoggedIn === true ? (<div className="header__right-side">
+                {isLoggedIn ? (<div className="header__right-side">
                     <button className="header__button" onClick={handleOpenModal}>+ Add clothes</button>
                     <ToggleSwitch />
                     <Link to="/profile" className="header__link">
-                        <p className="header__user-title">John Doe</p>
+                        <p className="header__user-title">{isLoggedIn ? userData?.name : 'No logged in'}</p>
                     </Link>
                     <Link to="/profile">
-                        <img className="header__avatar" src={userData.avatar} alt='avatar' />
+
+                        {userData?.avatar ? (<img className="header__avatar" src={userData?.avatar} alt='avatar' />) : <div className='header__avatar-placeholder'>{Array.from(userData?.name)[0].toUpperCase()}</div>}
                     </Link>
                 </div>) : (<div className='header__right-side'>
                     <ToggleSwitch />

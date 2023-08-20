@@ -27,7 +27,7 @@ const signinUser = ({ email, password }) => {
 }
 
 const checkToken = (token) => {
-    return request(`${BASE_URL}/user/me`, {
+    return request(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

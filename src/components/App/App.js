@@ -69,7 +69,11 @@ function App() {
   React.useEffect(() => {
     // const token = localStorage.getItem('jwt');
     if (token) {
-      handleTokenCheck(token).finally(() => setIsLoading(false))
+      handleTokenCheck(token)
+        .finally(() => {
+          setIsLoading(false);
+          setIsLoggedIn(true);
+        });
     } else {
       setIsLoggedIn(false);
     }
@@ -144,7 +148,7 @@ function App() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
           console.log(data);
-          handleLogin();
+          setIsLoggedIn(true);
           localStorage.setItem('jwt', data.token)
           // setCurrentUser(data); wrong code!
           // handleTokenCheck(data.token);
@@ -161,8 +165,7 @@ function App() {
       return auth.checkToken(token)
         .then((res) => {
           console.log(res);
-          handleLogin();
-          setCurrentUser(res.data);
+          setCurrentUser(res);
           history.push('/profile');
         }).catch(err => {
           console.error(err);
@@ -182,9 +185,6 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
-  }
-  const handleLogin = () => {
-    setIsLoggedIn(true);
   }
   const openConfirmationModal = () => {
     console.log('confrim delete modal opened!');
@@ -227,7 +227,7 @@ function App() {
           <LoginModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "login"}
-            buttonText='Login'
+            buttonText={isLoading ? 'Logging in...' : 'Login'}
             handleOpenSignupModal={handleOpenSignupModal}
             onSignInUser={onSignInUser}
           />)}
