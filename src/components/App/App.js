@@ -60,8 +60,16 @@ function App() {
       }).catch((err) => {
         console.error(err);
       });
-    handleTokenCheck();
   }, []);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      handleTokenCheck(token).finally(() => setIsLoading(false))
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [setCurrentUser, setIsLoggedIn, handleTokenCheck])
 
   function getItemList() {
     // here we create a function that returns a promise 
@@ -131,9 +139,9 @@ function App() {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
-          console.log(data.token);
+          console.log(data);
           handleLogin();
-          localStorage.setItem('jwt', data.token);
+          setCurrentUser(data);
           history.push('/profile')
           handleCloseModal();
         }
@@ -142,10 +150,14 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
-  function handleTokenCheck() {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      auth.checkToken(jwt);
+  function handleTokenCheck(token) {
+    if (token) {
+      return auth.checkToken(token).then((res) => {
+        handleLogin();
+        setCurrentUser(res.data);
+      }).catch(err => {
+        console.error(err);
+      });
       history.push('/profile');
 
     }
