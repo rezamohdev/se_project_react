@@ -24,16 +24,20 @@ function App() {
 
   const [activeModal, setActiveModal] = React.useState("");
   // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
+  const [token, setToken] = React.useState(localStorage.getItem('jwt'));
   const [cardBackground, setCardBackground] = React.useState("Clear");
+  const [selectedCard, setSelectedCard] = React.useState({});
   const [location, setLocation] = React.useState("");
   const [dayType, setDayType] = React.useState(true);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [clothingItems, setClothingItems] = React.useState([]);
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [currecnUser, setCurrentUser] = React.useState({});
+
   const history = useHistory();
 
 
@@ -63,13 +67,13 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    const token = localStorage.getItem('jwt');
+    // const token = localStorage.getItem('jwt');
     if (token) {
       handleTokenCheck(token).finally(() => setIsLoading(false))
     } else {
       setIsLoggedIn(false);
     }
-  }, [setCurrentUser, setIsLoggedIn, handleTokenCheck])
+  }, [token])
 
   function getItemList() {
     // here we create a function that returns a promise 
@@ -141,7 +145,9 @@ function App() {
         if (data.token) {
           console.log(data);
           handleLogin();
-          setCurrentUser(data);
+          localStorage.setItem('jwt', data.token)
+          // setCurrentUser(data); wrong code!
+          // handleTokenCheck(data.token);
           history.push('/profile')
           handleCloseModal();
         }
@@ -152,13 +158,15 @@ function App() {
   }
   function handleTokenCheck(token) {
     if (token) {
-      return auth.checkToken(token).then((res) => {
-        handleLogin();
-        setCurrentUser(res.data);
-      }).catch(err => {
-        console.error(err);
-      });
-      history.push('/profile');
+      return auth.checkToken(token)
+        .then((res) => {
+          console.log(res);
+          handleLogin();
+          setCurrentUser(res.data);
+          history.push('/profile');
+        }).catch(err => {
+          console.error(err);
+        });
 
     }
   }
