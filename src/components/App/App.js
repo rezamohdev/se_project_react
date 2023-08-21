@@ -71,7 +71,7 @@ function App() {
     if (token) {
       handleTokenCheck(token)
         .finally(() => {
-          setIsLoading(false);
+          setIsLoading(true);
           setIsLoggedIn(true);
         });
     } else {
