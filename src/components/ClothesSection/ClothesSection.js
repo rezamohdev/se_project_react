@@ -6,6 +6,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
     const currentUser = React.useContext(CurrentUserContext);
+
     return (
         <div className="clothes-section">
             <div className="clothes-section__header">
@@ -14,8 +15,7 @@ function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
             </div>
             <div className="card-container">
                 {sectionData.map((item) => {
-                    const isOwn = item.owner._id === currentUser._id;
-                    isOwn && (<ItemCard card={item} key={item.id} onSelectCard={onSelectCard} />)
+                    item.owner._id === currentUser._id && <ItemCard card={item} key={item.id} onSelectCard={onSelectCard} />
                 }
                 )}
             </div>

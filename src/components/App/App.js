@@ -111,11 +111,12 @@ function App() {
     // here we create a function that returns a promise 
     function makeRequest() {
       // `return` lets us use a promise chain `then, catch, finally`
-      return api.addItem(item).then((newItem) => {
-        console.log(newItem);
-        setClothingItems([newItem, ...clothingItems]);
-        handleCloseModal();
-      });
+      return api.addItem(item, token)
+        .then((newItem) => {
+          console.log(newItem);
+          setClothingItems([newItem, ...clothingItems]);
+          handleCloseModal();
+        });
     }
     // here we call handleSubmit passing the request
     handleSubmit(makeRequest);
