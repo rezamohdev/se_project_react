@@ -25,6 +25,17 @@ const signinUser = ({ email, password }) => {
         body: JSON.stringify({ email, password })
     })
 }
+const updateUser = ({ name, avatar }, token) => {
+    return request(`${BASE_URL}/users/me`, {
+        method: "PATCH",
+        headers: {
+            'content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name, avatar })
+
+    })
+}
 
 const checkToken = (token) => {
     return request(`${BASE_URL}/users/me`, {
@@ -36,6 +47,6 @@ const checkToken = (token) => {
     })
 }
 
-const auth = { signupUser, signinUser, checkToken };
+const auth = { signupUser, signinUser, updateUser, checkToken };
 
 export default auth;

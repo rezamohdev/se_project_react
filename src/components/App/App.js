@@ -162,6 +162,19 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
+  function onUpdateUser({ name, avatar }) {
+    function makeRequest() {
+      return auth.updateUser({ name, avatar }, token)
+        .then((res) => {
+          console.log(res);
+          handleCloseModal();
+        }).
+        finally(() => {
+          setIsLoading(false);
+        })
+    }
+    handleSubmit(makeRequest);
+  }
   function handleTokenCheck(token) {
     if (token) {
       return auth.checkToken(token)
@@ -221,7 +234,9 @@ function App() {
                 cards={clothingItems}
                 onSelectCard={handleSelectedCard}
                 handleOpenModal={handleOpenModal}
-                handleOpenEditModal={handleOpenEditModal} />
+                handleOpenEditModal={handleOpenEditModal}
+                onUpdateUser={onUpdateUser}
+              />
             </ProtectedRoute>
           </Switch>
         </CurrentTemperatureUnitContext.Provider>
@@ -251,8 +266,8 @@ function App() {
       {activeModal === "edit" && (
         <EditProfileModal
           handleCloseModal={handleCloseModal}
-
           isOpen={activeModal === 'edit'}
+          onUpdateUser={onUpdateUser}
           buttonText={isLoading ? 'Saving Changes...' : 'Save Changes'} />)}
     </CurrentUserContext.Provider>
   );
