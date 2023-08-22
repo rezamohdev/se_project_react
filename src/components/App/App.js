@@ -126,8 +126,8 @@ function App() {
     // here we create a function that returns a promise 
     function makeRequest() {
       // `return` lets us use a promise chain `then, catch, finally`
-      return api.addItem(card).then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+      return api.removeItem(card._id, token).then(() => {
+        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         handleCloseModal();
       });
     }
