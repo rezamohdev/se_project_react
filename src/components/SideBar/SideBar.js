@@ -3,7 +3,7 @@ import './SideBar.css';
 import avatarImage from '../../images/avatar.svg';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SideBar() {
+function SideBar({ handleOpenEditModal }) {
     const userData = React.useContext(CurrentUserContext);
 
     return (
@@ -14,6 +14,8 @@ function SideBar() {
                     <div className='header__avatar-placeholder'>{Array.from(userData?.name)[0].toUpperCase()}</div>}
                 <p className="sidebar__user-title">{userData.name}</p>
             </div>
+            <button className="sidebar__edit-info" onClick={handleOpenEditModal}>Change profile data</button>
+            <button className="sidebar__logout">Log out</button>
         </div>
     )
 }

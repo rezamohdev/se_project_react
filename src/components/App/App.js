@@ -19,6 +19,7 @@ import { useEscape } from '../../hooks/useEscape';
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal ';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import EditProfileModal from '../EditProfileModal/EditProfileModal';
 
 function App() {
 
@@ -193,6 +194,9 @@ function App() {
   const handleOpenLoginModal = () => {
     setActiveModal('login');
   }
+  const handleOpenEditModal = () => {
+    setActiveModal('edit');
+  }
   const handleOpenSignupModal = () => {
     setActiveModal('register')
   }
@@ -213,7 +217,11 @@ function App() {
               <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile" >
-              <Profile cards={clothingItems} onSelectCard={handleSelectedCard} handleOpenModal={handleOpenModal} />
+              <Profile
+                cards={clothingItems}
+                onSelectCard={handleSelectedCard}
+                handleOpenModal={handleOpenModal}
+                handleOpenEditModal={handleOpenEditModal} />
             </ProtectedRoute>
           </Switch>
         </CurrentTemperatureUnitContext.Provider>
@@ -234,12 +242,18 @@ function App() {
         {activeModal === "register" && (
           <RegisterModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "login"}
+            isOpen={activeModal === "register"}
             buttonText='Next'
             handleOpenLoginModal={handleOpenLoginModal}
             handleOpenSignupModal={handleOpenSignupModal}
             onRegisterUser={onRegisterUser} />)}
       </div >
+      {activeModal === "edit" && (
+        <EditProfileModal
+          handleCloseModal={handleCloseModal}
+
+          isOpen={activeModal === 'edit'}
+          buttonText={isLoading ? 'Saving Changes...' : 'Save Changes'} />)}
     </CurrentUserContext.Provider>
   );
 }
