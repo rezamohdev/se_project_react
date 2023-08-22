@@ -122,12 +122,12 @@ function App() {
     handleSubmit(makeRequest);
   }
 
-  function handleCardDelete(card) {
+  function handleCardDelete(item) {
     // here we create a function that returns a promise 
     function makeRequest() {
       // `return` lets us use a promise chain `then, catch, finally`
-      return api.removeItem(card._id, token).then(() => {
-        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
+      return api.removeItem(item._id, token).then(() => {
+        setClothingItems((cards) => cards.filter((card) => card._id !== item._id));
         handleCloseModal();
       });
     }
@@ -165,7 +165,6 @@ function App() {
     if (token) {
       return auth.checkToken(token)
         .then((res) => {
-          console.log(res);
           setCurrentUser(res);
           history.push('/profile');
         }).catch(err => {

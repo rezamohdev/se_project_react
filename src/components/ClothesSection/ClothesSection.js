@@ -17,7 +17,7 @@ function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
                 {sectionData.map((item) => {
                     const isOwner = item.owner === currentUser._id;
 
-                    return isOwner && <ItemCard card={item} key={item.id} onSelectCard={onSelectCard} />
+                    return isOwner && <ItemCard card={item} key={item._id} onSelectCard={onSelectCard} />
                 }
                 )}
             </div>

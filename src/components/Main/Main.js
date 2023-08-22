@@ -34,7 +34,7 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
 
                 <div className="card-container">
                     {filteredCards.map((item) => {
-                        return (<ItemCard card={item} onSelectCard={onSelectCard} key={item.id} />)
+                        return (<ItemCard card={item} onSelectCard={onSelectCard} key={item._id} />)
                     }
                     )}
                 </div>
