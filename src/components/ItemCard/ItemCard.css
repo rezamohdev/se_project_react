@@ -62,3 +62,16 @@
 .card__like-button:hover {
   transform: scale(1.1);
 }
+.card__like-button_liked {
+  background-color: transparent;
+  width: 20px;
+  height: auto;
+  background: url(../../images/likeFilled.svg) center no-repeat;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 250ms all ease;
+}
+.card__like-button_liked:hover {
+  transform: scale(1.1);
+}

@@ -262,6 +262,8 @@ function App() {
                 handleOpenModal={handleOpenModal}
                 handleOpenEditModal={handleOpenEditModal}
                 onUpdateUser={onUpdateUser}
+                onCardLike={handleLikeClick}
+
               />
             </ProtectedRoute>
           </Switch>

@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { weatherOptions } from '../../utils/constants';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
+function ClothesSection({ sectionData, onSelectCard, onLikeClick, handleAddButton }) {
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
@@ -17,7 +17,7 @@ function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
                 {sectionData.map((item) => {
                     const isOwner = item.owner === currentUser._id;
 
-                    return isOwner && <ItemCard card={item} key={item._id} onSelectCard={onSelectCard} />
+                    return isOwner && <ItemCard onLikeClick={onLikeClick} card={item} key={item._id} onSelectCard={onSelectCard} />
                 }
                 )}
             </div>
