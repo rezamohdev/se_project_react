@@ -162,6 +162,10 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
+  function onLogoutUser() {
+    setIsLoggedIn(false);
+    localStorage.removeItem('jwt');
+  }
   function onUpdateUser({ name, avatar }) {
     function makeRequest() {
       return auth.updateUser({ name, avatar }, token)
@@ -263,6 +267,7 @@ function App() {
                 handleOpenEditModal={handleOpenEditModal}
                 onUpdateUser={onUpdateUser}
                 onCardLike={handleLikeClick}
+                onLogoutUser={onLogoutUser}
 
               />
             </ProtectedRoute>
