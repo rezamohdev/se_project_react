@@ -43,7 +43,7 @@ function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenS
                     </Link>
                     <Link to="/profile">
                         {userData?.avatar ? (<img className="header__avatar" src={userData?.avatar} alt='avatar' />) :
-                            <div className='header__avatar-placeholder'>{Array.from(userData?.name)[0].toUpperCase()}</div>}
+                            <div className='header__avatar-placeholder'>{userData.name.charAt().toUpperCase()}</div>}
                     </Link>
                 </div>) : (<div className='header__right-side'>
                     <ToggleSwitch />

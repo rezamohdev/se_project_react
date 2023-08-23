@@ -256,11 +256,13 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Main
+                isLoggedIn={isLoggedIn}
                 onCardLike={handleLikeClick}
                 onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile" >
               <Profile
+                isLoggedIn={isLoggedIn}
                 cards={clothingItems}
                 onSelectCard={handleSelectedCard}
                 handleOpenModal={handleOpenModal}
