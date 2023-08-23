@@ -36,7 +36,7 @@ const removeItem = (id, token) => {
 };
 
 const addItemLike = (id, token) => {
-    return request(`${BASE_URL}/${id}/likes`, {
+    return request(`${BASE_URL}/items/${id}/likes`, {
         method: 'PUT',
         headers: {
             'content-Type': 'application/json',
@@ -45,7 +45,7 @@ const addItemLike = (id, token) => {
     })
 }
 const removeItemLike = (id, token) => {
-    return request(`${BASE_URL}/${id}/likes`, {
+    return request(`${BASE_URL}/items/${id}/likes`, {
         method: 'DELETE',
         headers: {
             'content-Type': 'application/json',

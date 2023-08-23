@@ -7,7 +7,7 @@ function ItemCard({ onSelectCard, card, onLikeClick }) {
 
     const currentUser = useContext(CurrentUserContext);
     const checkLikeStatus = () => {
-        card.likes.some(user => user.name === currentUser.name);
+        card.likes.some(user => user._id === currentUser._id);
     }
     const [isLiked, setIsLiked] = useState(checkLikeStatus);
 
