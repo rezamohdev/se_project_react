@@ -200,6 +200,30 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   }
+  const handleLikeClick = ({ id, isLiked, currecnUser }) => {
+    // Check if this card is now liked
+    isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+      api
+        // the first argument is the card's id
+        .addItemLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+      api
+        // the first argument is the card's id
+        .removeItemLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+  };
   const openConfirmationModal = () => {
     console.log('confrim delete modal opened!');
     setActiveModal("confirm")
@@ -227,7 +251,9 @@ function App() {
           <Header isLoggedIn={isLoggedIn} handleOpenModal={handleOpenModal} currenLocation={location} handleOpenLoginModal={handleOpenLoginModal} handleOpenSignupModal={handleOpenSignupModal} />
           <Switch>
             <Route exact path="/">
-              <Main onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
+              <Main
+                onCardLike={handleLikeClick}
+                onSelectCard={handleSelectedCard} cards={clothingItems} weatherTemp={temp} cardBackground={cardBackground} dayType={dayType} />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile" >
               <Profile

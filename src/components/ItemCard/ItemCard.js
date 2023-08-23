@@ -1,8 +1,27 @@
 import './ItemCard.css'
-function ItemCard({ onSelectCard, card }) {
+import likeBackground from '../../images/avatar.svg';
+import { useContext, useState } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+function ItemCard({ onSelectCard, card, onLikeClick }) {
+
+    const currentUser = useContext(CurrentUserContext);
+    const checkLikeStatus = () => {
+        card.likes.some(user => user.name === currentUser.name);
+    }
+    const [isLiked, setIsLiked] = useState(checkLikeStatus);
+
+
+    const handleLikeClick = () => {
+        setIsLiked(!isLiked);
+        onLikeClick({ id: card._id, isLiked: !isLiked, user: currentUser })
+    }
     return (
         <div className="card"  >
-            <span className="card__text">{card.name}</span>
+            <div className='card__header'>
+                <span className="card__text">{card.name}</span>
+                <button className="card__like-button" onClick={handleLikeClick}></button>
+            </div>
             <img src={card.imageUrl} className="card__image" alt='image item' onClick={() => onSelectCard(card)} />
         </div >
 
