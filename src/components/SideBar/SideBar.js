@@ -11,7 +11,7 @@ function SideBar({ handleOpenEditModal, onLogoutUser }) {
             <div className="sidebar__info">
                 {/* <img src={userData.avatar} alt="User avatar" className="sidebar__user-avatar" /> */}
                 {userData?.avatar ? (<img className="sidebar__user-avatar" src={userData?.avatar} alt='avatar' />) :
-                    <div className='header__avatar-placeholder'>{userData.name.charAt().toUpperCase()}</div>
+                    <div className='header__avatar-placeholder'>{userData?.name?.charAt().toUpperCase() || ""}</div>
                 }
 
                 <p className="sidebar__user-title">{userData.name}</p>
