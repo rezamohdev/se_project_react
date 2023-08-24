@@ -149,11 +149,11 @@ function App() {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
-          console.log(data);
+          console.log('sign in data', data);
           setIsLoggedIn(true);
           localStorage.setItem('jwt', data.token)
-          // setCurrentUser(data); wrong code!
-          // handleTokenCheck(data.token);
+          // setCurrentUser(data);
+          handleTokenCheck(data.token);
           history.push('/profile')
           handleCloseModal();
         }
