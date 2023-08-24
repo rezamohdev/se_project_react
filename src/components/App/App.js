@@ -170,6 +170,7 @@ function App() {
     function makeRequest() {
       return auth.updateUser({ name, avatar }, token)
         .then((res) => {
+          setCurrentUser(res);
           console.log(res);
           handleCloseModal();
         }).

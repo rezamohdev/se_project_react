@@ -40,7 +40,7 @@ const addItemLike = (id, token) => {
         method: 'PUT',
         headers: {
             'content-Type': 'application/json',
-            authorization: `Bearer ${token}`,
+            authorization: `Bearer ${localStorage.getItem('jwt')}`,
         }
     })
 }
@@ -49,7 +49,7 @@ const removeItemLike = (id, token) => {
         method: 'DELETE',
         headers: {
             'content-Type': 'application/json',
-            authorization: `Bearer ${token}`,
+            authorization: `Bearer ${localStorage.getItem('jwt')}`,
         }
     })
 }
