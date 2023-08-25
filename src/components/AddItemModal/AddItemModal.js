@@ -4,27 +4,6 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 function AddItemModal({ onAddItem, handleCloseModal, isOpen = { isOpen }, buttonText, isLoading }) {
     const { values, handleChange, setValues } = useForm({})
-    // const [name, setName] = React.useState("");
-    // const [imageUrl, setImageUrl] = React.useState("");
-    // const [weather, setWeather] = React.useState('');
-
-
-
-
-
-    // const handleNameChange = (e) => {
-    //     console.log(e.target.value);
-    //     setName(e.target.value)
-    // }
-
-    // const handleUrlChange = (e) => {
-    //     console.log(e.target.value);
-    //     setImageUrl(e.target.value)
-    // }
-    // const handleWeatherTypeChange = (e) => {
-    //     console.log(e.target.value)
-    //     setWeather(e.target.value);
-    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,9 +14,9 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen = { isOpen }, button
         <ModalWithForm isOpen={isOpen} title="New garment" onClose={handleCloseModal} name='form' buttonText={buttonText} onSubmit={handleSubmit}>
             <fieldset className='form__fieldset'>
                 <label htmlFor='name' className='form__label'>Name</label>
-                <input type='text' id='name' className='form__input' placeholder='Name' name="name" minLength={1} maxLength={30} onChange={handleChange} />
+                <input type='text' id='name' className='form__input' placeholder='Name' name="name" minLength={1} maxLength={30} onChange={handleChange} value={values.name || ""} />
                 <label htmlFor='url' className='form__label'>Image</label>
-                <input id='url' type='url' className='form__input' placeholder='Image URL' name="imageUrl" onChange={handleChange} />
+                <input id='url' type='url' className='form__input' placeholder='Image URL' name="imageUrl" onChange={handleChange} value={values.imageUrl || ""} />
             </fieldset>
             <fieldset className='form__fieldset'>
                 <span className='form__label'>Select the weather type:</span>

@@ -87,9 +87,7 @@ function App() {
       return api.getItemList().then((data) => {
         setClothingItems(data);
         // daatabase api catch
-      }).catch((err) => {
-        console.error(err);
-      });
+      })
     }
     // here we call handleSubmit passing the request
     handleSubmit(makeRequest);
@@ -116,7 +114,6 @@ function App() {
         .then((newItem) => {
           console.log(newItem);
           setClothingItems([newItem, ...clothingItems]);
-          handleCloseModal();
         });
     }
     // here we call handleSubmit passing the request
@@ -129,7 +126,6 @@ function App() {
       // `return` lets us use a promise chain `then, catch, finally`
       return api.removeItem(item._id, token).then(() => {
         setClothingItems((cards) => cards.filter((card) => card._id !== item._id));
-        handleCloseModal();
       });
     }
     // here we call handleSubmit passing the request
@@ -140,7 +136,6 @@ function App() {
       return auth.signupUser({ name, avatar, email, password }).then((user) => {
         console.log(user);
         history.push('/signin');
-        handleCloseModal();
       })
     }
     handleSubmit(makeRequest);
@@ -155,7 +150,6 @@ function App() {
           // setCurrentUser(data);
           handleTokenCheck(data.token);
           history.push('/profile')
-          handleCloseModal();
         }
 
       })
@@ -172,10 +166,6 @@ function App() {
         .then((res) => {
           setCurrentUser(res);
           console.log(res);
-          handleCloseModal();
-        }).
-        finally(() => {
-          setIsLoading(false);
         })
     }
     handleSubmit(makeRequest);
@@ -227,7 +217,7 @@ function App() {
             cards.map((c) => (c._id === id ? updatedCard : c))
           );
         })
-        .catch((err) => console.log(err));
+        .catch(console.error);
   };
   const openConfirmationModal = () => {
     console.log('confrim delete modal opened!');

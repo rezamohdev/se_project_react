@@ -16,7 +16,7 @@ function ItemModal({ onClose, selectedCard, onDeleteItem }) {
             <div className='modal__content'>
                 <div className="modal__body" >
                     <button type="button" className='modal__close' onClick={onClose} />
-                    <img src={selectedCard.imageUrl} className="modal__image" alt="image of modal" />
+                    <img src={selectedCard.imageUrl} className="modal__image" alt={selectedCard.name} />
                 </div>
                 <div className='modal__footer' >
                     <div className='modal__footer-top'>

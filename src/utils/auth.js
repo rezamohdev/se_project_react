@@ -1,9 +1,7 @@
-import { handleServerResponse } from './Api';
+// import { handleServerResponse, request } from './Api';
+import { request } from './Api'
 const BASE_URL = 'http://localhost:3001';
 
-function request(url, options) {
-    return fetch(url, options).then(handleServerResponse)
-}
 
 // signup
 const signupUser = ({ name, avatar, email, password }) => {

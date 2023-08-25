@@ -7,7 +7,7 @@ function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
 
     const currentUser = useContext(CurrentUserContext);
     const checkLikeStatus = () => {
-        card.likes.some(user => user._id === currentUser._id);
+        return card.likes.some(user => user._id === currentUser._id);
     }
     const [isLiked, setIsLiked] = useState(checkLikeStatus);
 
@@ -26,7 +26,7 @@ function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
                 {isLoggedIn ? <button className={card.likes.includes(currentUser._id) ? 'card__like-button_liked' : 'card__like-button'} onClick={handleLikeClick}></button> : ''}
 
             </div>
-            <img src={card.imageUrl} className="card__image" alt='image item' onClick={() => onSelectCard(card)} />
+            <img src={card.imageUrl} className="card__image" alt={card.name} onClick={() => onSelectCard(card)} />
         </div >
 
     );
