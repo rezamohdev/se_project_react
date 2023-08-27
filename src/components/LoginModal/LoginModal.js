@@ -16,9 +16,9 @@ function LoginModal({ onSignInUser, handleCloseModal, isOpen = { isOpen }, butto
         <ModalWithForm isOpen={isOpen} title="Log in" onClose={handleCloseModal} name='login' buttonText={buttonText} onSubmit={handleOnSubmit}>
             <fieldset className='form__fieldset'>
                 <label htmlFor='email' className='form__label'>Email</label>
-                <input type='email' id='email' className='form__input' placeholder='Email' name="email" minLength={1} maxLength={30} onChange={handleChange} />
+                <input value={values.email} type='email' id='email' className='form__input' placeholder='Email' name="email" minLength={1} maxLength={30} onChange={handleChange} />
                 <label htmlFor='password' className='form__label'>Password</label>
-                <input id='password' type='password' className='form__input' placeholder='Password' name="password" onChange={handleChange} />
+                <input value={values.password} id='password' type='password' className='form__input' placeholder='Password' name="password" onChange={handleChange} />
             </fieldset>
             <Link to="/signup" onClick={handleOpenSignupModal} className="modal__register">Or Register</Link>
         </ModalWithForm >
