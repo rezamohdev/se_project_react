@@ -134,7 +134,7 @@ function App() {
   function onRegisterUser({ name, avatar, email, password }) {
     function makeRequest() {
       return auth.signupUser({ name, avatar, email, password }).then((user) => {
-        console.log(user);
+        // console.log(user);
         history.push('/signin');
       })
     }
@@ -144,7 +144,7 @@ function App() {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
-          console.log('sign in data', data);
+          // console.log('sign in data', data);
           setIsLoggedIn(true);
           localStorage.setItem('jwt', data.token)
           // setCurrentUser(data);
