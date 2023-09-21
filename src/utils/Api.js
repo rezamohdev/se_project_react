@@ -1,7 +1,7 @@
 // const BASE_URL = 'https://my-json-server.typicode.com/rezamohdev/se_project_react';
 // const BASE_URL = 'http://localhost:3001';
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'deployed-backend-url'
+    ? 'api.wtwr-demo.mooo.com'
     : 'http://localhost:3001';
 
 

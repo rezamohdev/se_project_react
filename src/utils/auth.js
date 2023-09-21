@@ -2,7 +2,7 @@
 import { request } from './Api'
 // const BASE_URL = 'http://localhost:3001';
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'deployed-backend-url'
+    ? 'api.wtwr-demo.mooo.com'
     : 'http://localhost:3001';
 
 
