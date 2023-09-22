@@ -9,7 +9,6 @@ function LoginModal({ onSignInUser, handleCloseModal, isOpen = { isOpen }, butto
 
     const handleOnSubmit = (evt) => {
         evt.preventDefault();
-        // console.log(values);
         onSignInUser(values);
     }
     return (

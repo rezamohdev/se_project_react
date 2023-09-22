@@ -112,7 +112,6 @@ function App() {
       // `return` lets us use a promise chain `then, catch, finally`
       return api.addItem(item, token)
         .then((newItem) => {
-          console.log(newItem);
           setClothingItems([newItem, ...clothingItems]);
         });
     }
@@ -134,7 +133,6 @@ function App() {
   function onRegisterUser({ name, avatar, email, password }) {
     function makeRequest() {
       return auth.signupUser({ name, avatar, email, password }).then((user) => {
-        // console.log(user);
         history.push('/signin');
       })
     }
@@ -144,7 +142,6 @@ function App() {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
-          // console.log('sign in data', data);
           setIsLoggedIn(true);
           localStorage.setItem('jwt', data.token)
           // setCurrentUser(data);
@@ -220,7 +217,6 @@ function App() {
         .catch(console.error);
   };
   const openConfirmationModal = () => {
-    console.log('confrim delete modal opened!');
     setActiveModal("confirm")
   }
   const handleOpenLoginModal = () => {

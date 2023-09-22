@@ -5,8 +5,6 @@ function ItemModal({ onClose, selectedCard, onDeleteItem }) {
     const currentUser = React.useContext(CurrentUserContext);
     // Checking if the current user is the owner of the current clothing item
     const isOwn = selectedCard.owner === currentUser._id;
-    // isOwn ? console.log('t') : console.log('f');
-    // console.log(selectedCard.owner);
     const itemDeleteButtonClassName = (
         `modal__delete-button ${isOwn ? 'modal__delete-button_visible' : 'modal__delete-button_hidden'}`
     );
