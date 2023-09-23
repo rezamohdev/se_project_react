@@ -20,9 +20,9 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen = { isOpen }, button
             </fieldset>
             <fieldset className='form__fieldset'>
                 <span className='form__label'>Select the weather type:</span>
-                <label htmlFor="wather-hot" className='form__label'><input type='radio' value='Hot' onChange={handleChange} name='weather' id='wather-hot' className='form__input' /> Hot</label>
-                <label htmlFor="wather-warm" className='form__label'><input type='radio' value='Warm' onChange={handleChange} name='weather' id='wather-warm' className='form__input' /> Warm</label>
-                <label htmlFor="wather-cold" className='form__label'><input type='radio' value='Cold' onChange={handleChange} name='weather' id='wather-cold' className='form__input' /> Cold</label>
+                <label htmlFor="wather-hot" className='form__label'><input type='radio' value='hot' onChange={handleChange} name='weather' id='wather-hot' className='form__input' /> Hot</label>
+                <label htmlFor="wather-warm" className='form__label'><input type='radio' value='warm' onChange={handleChange} name='weather' id='wather-warm' className='form__input' /> Warm</label>
+                <label htmlFor="wather-cold" className='form__label'><input type='radio' value='cold' onChange={handleChange} name='weather' id='wather-cold' className='form__input' /> Cold</label>
             </fieldset>
         </ModalWithForm >
 
